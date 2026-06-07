@@ -49,6 +49,14 @@ Never hardcode hex values in components. Never add new tokens without adding the
 - Body copy: `text-base text-text-secondary` — DM Sans
 - Any highlighted/branded word inside a heading should be `text-accent italic` (inherits serif from parent)
 
+### Hero Typography Hierarchy Rules
+
+These two rules apply to the hero (and inform any future hero-style sections):
+
+1. **Subheading font size = ½ of headline.** If the headline reads as "1" in visual weight, the subheading is "0.5". Currently: headline `text-5xl md:text-7xl`, subheading `text-sm md:text-base`. Never let the subheading creep back up to `text-lg` or above — it erodes the hierarchy.
+
+2. **Spacing doubles from heading→sub to sub→CTA.** If the gap between headline and subheading is N, the gap between subheading and the button row must be 2N. Currently: `mt-4` (16px) headline→sub, `mt-8` (32px) sub→buttons. Do not use a single shared `gap-*` on the flex container — it can't express different spacings per pair.
+
 ### Layout
 
 - Max content width: `max-w-6xl mx-auto px-6`

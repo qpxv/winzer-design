@@ -110,7 +110,7 @@ export default function HeroSection() {
         <CubeCard key={i} cfg={cfg} springX={springX} springY={springY} />
       ))}
 
-      <div className="relative z-10 text-center max-w-4xl mx-auto px-6 flex flex-col items-center gap-6">
+      <div className="relative z-10 text-center max-w-4xl mx-auto px-6 flex flex-col items-center">
         <motion.h1
           className="text-5xl md:text-7xl font-serif tracking-tight text-text-primary leading-tight"
           initial={{ opacity: 0, y: 24 }}
@@ -123,7 +123,7 @@ export default function HeroSection() {
         </motion.h1>
 
         <motion.p
-          className="text-lg md:text-xl text-text-secondary max-w-xl"
+          className="mt-4 text-sm md:text-base text-text-secondary max-w-xl"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] }}
@@ -132,7 +132,7 @@ export default function HeroSection() {
         </motion.p>
 
         <motion.div
-          className="flex flex-col sm:flex-row items-center gap-10"
+          className="mt-8 flex flex-col sm:flex-row items-center gap-10"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] }}
