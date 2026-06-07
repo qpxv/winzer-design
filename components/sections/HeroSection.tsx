@@ -1,6 +1,7 @@
 'use client'
 
-import { useRef, useCallback } from 'react'
+import { useRef, useCallback, useState } from 'react'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import Button from '@/components/ui/Button'
@@ -29,13 +30,26 @@ const CUBE_CONFIGS: CubeConfig[] = [
   { project: PROJECTS[2], depth: 0.7, top: '48%', left: '70%', width: 'w-36', height: 'h-24', rotateFactor: -0.5, floatDuration: 6.5, floatDelay: 1.2 },
 ]
 
-function PlaceholderImage({ name, className }: { name: string; className?: string }) {
+function CubeImage({ src, name }: { src: string; name: string }) {
+  const [errored, setErrored] = useState(false)
+
+  if (errored) {
+    return (
+      <div className="w-full h-full bg-surface flex items-center justify-center text-xs text-text-muted font-medium select-none">
+        {name}
+      </div>
+    )
+  }
+
   return (
-    <div
-      className={`bg-surface flex items-center justify-center text-xs text-text-muted font-medium select-none ${className ?? ''}`}
-    >
-      {name}
-    </div>
+    <Image
+      src={src}
+      alt={name}
+      fill
+      className="object-cover object-top"
+      onError={() => setErrored(true)}
+      sizes="(max-width: 768px) 0px, 260px"
+    />
   )
 }
 
@@ -85,7 +99,7 @@ export default function HeroSection() {
             ease: 'easeInOut',
           }}
         >
-          <PlaceholderImage name={cfg.project.name} className="w-full h-full" />
+          <CubeImage src={cfg.project.image} name={cfg.project.name} />
         </motion.div>
       ))}
 
