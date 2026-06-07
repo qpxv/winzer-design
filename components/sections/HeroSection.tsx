@@ -2,9 +2,9 @@
 
 import { useRef, useCallback, useState } from 'react'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { motion, useMotionValue, useSpring, useTransform, MotionValue } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
-import Button from '@/components/ui/Button'
+import SpotlightButton from '@/components/ui/SpotlightButton'
 import { HERO, PROJECTS } from '@/lib/data'
 
 interface CubeConfig {
@@ -13,21 +13,15 @@ interface CubeConfig {
   top: string
   left: string
   width: string
-  height: string
-  rotateFactor: number
-  floatDuration: number
-  floatDelay: number
 }
 
 const CUBE_CONFIGS: CubeConfig[] = [
-  { project: PROJECTS[0], depth: 0.8, top: '8%', left: '2%', width: 'w-56', height: 'h-36', rotateFactor: 1, floatDuration: 7, floatDelay: 0 },
-  { project: PROJECTS[1], depth: 0.5, top: '15%', left: '72%', width: 'w-52', height: 'h-32', rotateFactor: -1, floatDuration: 9, floatDelay: 1 },
-  { project: PROJECTS[2], depth: 1.2, top: '62%', left: '5%', width: 'w-44', height: 'h-28', rotateFactor: 1.2, floatDuration: 6, floatDelay: 0.5 },
-  { project: PROJECTS[3], depth: 0.6, top: '70%', left: '68%', width: 'w-60', height: 'h-40', rotateFactor: -0.8, floatDuration: 8, floatDelay: 2 },
-  { project: PROJECTS[4], depth: 1.0, top: '38%', left: '78%', width: 'w-48', height: 'h-32', rotateFactor: 1.5, floatDuration: 10, floatDelay: 1.5 },
-  { project: PROJECTS[5], depth: 0.4, top: '82%', left: '35%', width: 'w-40', height: 'h-28', rotateFactor: -1.2, floatDuration: 7.5, floatDelay: 3 },
-  { project: PROJECTS[0], depth: 0.9, top: '25%', left: '1%', width: 'w-40', height: 'h-28', rotateFactor: 0.7, floatDuration: 8.5, floatDelay: 2.5 },
-  { project: PROJECTS[2], depth: 0.7, top: '48%', left: '70%', width: 'w-36', height: 'h-24', rotateFactor: -0.5, floatDuration: 6.5, floatDelay: 1.2 },
+  { project: PROJECTS[0], depth: 0.8, top: '20%', left: '2%',  width: 'w-56' },
+  { project: PROJECTS[1], depth: 0.5, top: '15%', left: '72%', width: 'w-52' },
+  { project: PROJECTS[2], depth: 1.2, top: '62%', left: '5%',  width: 'w-44' },
+  { project: PROJECTS[3], depth: 0.6, top: '70%', left: '68%', width: 'w-60' },
+  { project: PROJECTS[4], depth: 1.0, top: '38%', left: '78%', width: 'w-48' },
+  { project: PROJECTS[5], depth: 0.4, top: '82%', left: '35%', width: 'w-40' },
 ]
 
 function CubeImage({ src, name }: { src: string; name: string }) {
@@ -35,7 +29,7 @@ function CubeImage({ src, name }: { src: string; name: string }) {
 
   if (errored) {
     return (
-      <div className="w-full h-full bg-surface flex items-center justify-center text-xs text-text-muted font-medium select-none">
+      <div className="w-full aspect-video bg-surface flex items-center justify-center text-xs text-text-muted font-medium select-none">
         {name}
       </div>
     )
@@ -45,62 +39,75 @@ function CubeImage({ src, name }: { src: string; name: string }) {
     <Image
       src={src}
       alt={name}
-      fill
-      className="object-cover object-top"
+      width={1663}
+      height={950}
+      className="w-full h-auto"
       onError={() => setErrored(true)}
       sizes="(max-width: 768px) 0px, 260px"
     />
   )
 }
 
+function CubeCard({
+  cfg,
+  springX,
+  springY,
+}: {
+  cfg: CubeConfig
+  springX: MotionValue<number>
+  springY: MotionValue<number>
+}) {
+  const x = useTransform(springX, (v) => v * cfg.depth * 18)
+  const y = useTransform(springY, (v) => v * cfg.depth * 18)
+
+  return (
+    <motion.div
+      className={`absolute ${cfg.width} rounded-lg shadow-[0_4px_24px_rgba(124,58,237,0.25)] overflow-hidden`}
+      style={{ top: cfg.top, left: cfg.left, x, y }}
+    >
+      <CubeImage src={cfg.project.image} name={cfg.project.name} />
+    </motion.div>
+  )
+}
+
 export default function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null)
 
-  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
-    const el = sectionRef.current
-    if (!el) return
-    const rect = el.getBoundingClientRect()
-    const mx = ((e.clientX - rect.left) / rect.width - 0.5) * 2
-    const my = ((e.clientY - rect.top) / rect.height - 0.5) * 2
-    el.style.setProperty('--mx', String(mx))
-    el.style.setProperty('--my', String(my))
-  }, [])
+  const mouseX = useMotionValue(0)
+  const mouseY = useMotionValue(0)
+
+  const springX = useSpring(mouseX, { stiffness: 60, damping: 20, mass: 0.5 })
+  const springY = useSpring(mouseY, { stiffness: 60, damping: 20, mass: 0.5 })
+
+  const handleMouseMove = useCallback(
+    (e: React.MouseEvent<HTMLElement>) => {
+      const el = sectionRef.current
+      if (!el) return
+      const rect = el.getBoundingClientRect()
+      mouseX.set(((e.clientX - rect.left) / rect.width - 0.5) * 2)
+      mouseY.set(((e.clientY - rect.top) / rect.height - 0.5) * 2)
+    },
+    [mouseX, mouseY],
+  )
 
   return (
     <section
       ref={sectionRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-bg"
       onMouseMove={handleMouseMove}
-      style={
-        {
-          '--mx': '0',
-          '--my': '0',
-        } as React.CSSProperties
-      }
     >
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: 'linear-gradient(to right, rgba(124,58,237,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(124,58,237,0.08) 1px, transparent 1px)',
+          backgroundSize: '48px 48px',
+          maskImage: 'radial-gradient(ellipse 65% 60% at 50% 50%, transparent 20%, black 75%)',
+          WebkitMaskImage: 'radial-gradient(ellipse 65% 60% at 50% 50%, transparent 20%, black 75%)',
+        }}
+      />
+
       {CUBE_CONFIGS.map((cfg, i) => (
-        <motion.div
-          key={i}
-          className={`absolute ${cfg.width} ${cfg.height} rounded-2xl shadow-lg overflow-hidden opacity-60`}
-          style={
-            {
-              top: cfg.top,
-              left: cfg.left,
-              '--depth': cfg.depth,
-              transform: `perspective(800px) rotateX(calc(var(--my) * ${cfg.rotateFactor * 4}deg)) rotateY(calc(var(--mx) * ${cfg.rotateFactor * 4}deg)) translateX(calc(var(--mx) * ${cfg.depth * 30}px)) translateY(calc(var(--my) * ${cfg.depth * 20}px))`,
-              transition: 'transform 0.1s linear',
-            } as React.CSSProperties
-          }
-          animate={{ y: [0, -12, 0] }}
-          transition={{
-            duration: cfg.floatDuration,
-            delay: cfg.floatDelay,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        >
-          <CubeImage src={cfg.project.image} name={cfg.project.name} />
-        </motion.div>
+        <CubeCard key={i} cfg={cfg} springX={springX} springY={springY} />
       ))}
 
       <div className="relative z-10 text-center max-w-4xl mx-auto px-6 flex flex-col items-center gap-6">
@@ -125,14 +132,14 @@ export default function HeroSection() {
         </motion.p>
 
         <motion.div
-          className="flex flex-col sm:flex-row items-center gap-4"
+          className="flex flex-col sm:flex-row items-center gap-10"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] }}
         >
-          <Button variant="primary" href="#contact">
+          <SpotlightButton href="#contact">
             {HERO.cta}
-          </Button>
+          </SpotlightButton>
           <a
             href="#work"
             className="flex items-center gap-2 text-text-secondary hover:text-text-primary transition-colors duration-200 font-medium"

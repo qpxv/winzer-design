@@ -33,6 +33,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 | `--color-accent-hover` | `#6d28d9` | `hover:bg-accent-hover` |
 | `--color-accent-light` | `#f3eeff` | `bg-accent-light` |
 | `--color-accent-muted` | `#ede9fe` | `bg-accent-muted`, `text-accent-muted` |
+| `--color-btn-primary` | `#8b5cf6` | `bg-btn-primary` — used only on SpotlightButton, lighter than accent |
 
 Never hardcode hex values in components. Never add new tokens without adding them to `@theme {}` first.
 
@@ -66,10 +67,11 @@ app/
 components/
   ui/
     Button.tsx         # Shared button — variants: primary | secondary; sizes: default | sm
+    SpotlightButton.tsx # Hero primary CTA only — spotlight glow on hover. Renders <a> with href or <button>. Uses useMotionValue for zero-rerender mouse tracking.
     ProjectModal.tsx   # 'use client' — full-screen iframe overlay for work items
   sections/
     NavBar.tsx         # 'use client' — sticky, scroll-blur on >20px
-    HeroSection.tsx    # 'use client' — parallax cube grid + headline + CTAs
+    HeroSection.tsx    # 'use client' — parallax image grid + headline + CTAs
     WorkSection.tsx    # 'use client' — 3×2 project card grid, opens ProjectModal
     ProcessSection.tsx # 'use client' — 3-step grid with step numbers
     TestimonialsSection.tsx  # 'use client' — 3-card testimonial grid
@@ -85,6 +87,28 @@ lib/
 types/
   index.ts             # Project, ProcessStep, Testimonial, PricingTier interfaces
 ```
+
+## HeroSection — Current Implementation
+
+The hero has a floating project image grid with a mouse-parallax effect. Key details:
+
+- **Images**: 6 project screenshots in `public/projects/` (real PNGs, wired to `PROJECTS` array). Rendered via `next/image` with `width={1663} height={950} className="w-full h-auto"` — no cropping, natural aspect ratio.
+- **Parallax**: `useMotionValue` + `useSpring` (stiffness: 60, damping: 20) track the mouse position. Each image is a `CubeCard` component that calls `useTransform` to scale the spring by its own `depth` value (0.4–1.2). Deeper images move more. **Do NOT use CSS transitions or `onMouseMove` + CSS custom properties for this** — it causes a snap on cursor stop.
+- **CubeCard**: must be its own component (not inline in `.map()`) so `useTransform` is a valid hook call.
+- **No float animation** — the old `animate={{ y: [0, -12, 0] }}` loop has been removed.
+- **Image styles**: `rounded-lg`, `shadow-[0_4px_24px_rgba(124,58,237,0.25)]`, no opacity.
+- **Grid background**: purple `rgba(124,58,237,0.08)` grid lines at `48px` spacing, with a radial mask that fades the center (keeping the text readable). Lives in an `absolute inset-0` div as the first child of the section.
+- **Primary CTA**: uses `SpotlightButton`, NOT `Button`.
+- **Secondary CTA** ("See the work"): plain `<a>` with `ArrowRight` icon, links to `#work`.
+
+## SpotlightButton — Implementation Notes
+
+- Used **only** for the hero primary CTA. All other buttons use `Button.tsx`.
+- Mouse tracking: `onMouseMove` writes `--x`/`--y` directly via `ref.current.style.setProperty` — zero React re-renders.
+- `hovered` boolean state toggles only on `onMouseEnter`/`onMouseLeave` — only used for opacity transitions.
+- Spotlight overlay: `radial-gradient(circle 130px at var(--x) var(--y))` fades in 150ms, out 300ms.
+- Has a subtle `border-transparent hover:border-white/20` border that appears on hover.
+- Renders as `<a>` when `href` is passed, `<button>` otherwise.
 
 ## Content & Data
 
@@ -103,15 +127,13 @@ types/
 
 - `'use client'` — required on any component using hooks, browser APIs, or event handlers. All section components currently need it due to Framer Motion `whileInView`.
 - **Framer Motion** — always `whileInView` with `viewport={{ once: true, margin: '-80px' }}`. Stagger with `staggerContainer` + `fadeUp` from `lib/animations.ts`.
-- **Button** — always use `<Button>` from `components/ui/Button.tsx`. Never recreate button markup.
+- **Button** — always use `<Button>` from `components/ui/Button.tsx` except for the hero primary CTA which uses `SpotlightButton`.
 - **Section IDs** — `id="work"`, `id="process"`, `id="pricing"`, `id="contact"`. Nav links use `#work`, `#process`, `#pricing`. CTAs link to `#contact`.
-- **Project images** — placeholder `div` elements in `public/projects/` directory. Real screenshots to be dropped in by Ben.
 - **Calendly** — loaded via `<Script strategy="lazyOnload">` in ContactSection. URL in `lib/data.ts`.
 
 ## Placeholder Items (Ben to update before launch)
 
-1. `public/projects/*.png` — 6 real project screenshot images
-2. `lib/data.ts` → `PROJECTS[*].url` — real live URLs
-3. `lib/data.ts` → `TESTIMONIALS` — real quotes, names, roles
-4. `lib/data.ts` → `CONTACT_SECTION.calendlyUrl`
-5. `lib/data.ts` → `FOOTER.email`
+1. `lib/data.ts` → `PROJECTS[*].url` — real live URLs (currently placeholder domains)
+2. `lib/data.ts` → `TESTIMONIALS` — real quotes, names, roles (currently placeholder text)
+3. `lib/data.ts` → `CONTACT_SECTION.calendlyUrl` — verify this is the correct Calendly link
+4. `lib/data.ts` → `FOOTER.email` — verify this is the correct email

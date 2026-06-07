@@ -17,6 +17,9 @@
   --color-accent-light: #f3eeff;
   --color-accent-muted: #ede9fe;
 
+  /* Button */
+  --color-btn-primary: #8b5cf6;
+
   /* Fonts */
   --font-sans: var(--font-dm-sans);
   --font-serif: var(--font-dm-serif);
