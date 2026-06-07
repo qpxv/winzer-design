@@ -9,7 +9,7 @@ export const NAV = {
 export const HERO = {
   headline: 'Websites that mean',
   headlineAccent: 'business.',
-  subheadline: 'Custom-designed, custom-coded websites for brands that take their online presence seriously.',
+  subheadline: 'I design and build websites that make people stop, read, and get in touch. Custom code, considered design — no shortcuts.',
   cta: 'Book a free call',
   ctaSecondary: 'See the work',
 }
@@ -17,7 +17,7 @@ export const HERO = {
 export const WORK_SECTION = {
   label: 'The work',
   heading: 'Every site built from scratch.',
-  subheading: 'No templates. No page builders. Just clean code and considered design.',
+  subheading: 'The design comes from your brand. The code is clean. The result is something that actually reflects what you do.',
 }
 
 export const PROJECTS: Project[] = [
@@ -74,23 +74,23 @@ export const PROCESS_STEPS: ProcessStep[] = [
   {
     number: '01',
     title: 'Discovery call',
-    description: 'We talk for 30 minutes. You tell me what you need, I tell you if I can make it better than you imagined. No commitment required.',
+    description: "A 30-minute conversation to understand what you actually need. I'll tell you honestly if I think I can help — and how. No sales pitch.",
   },
   {
     number: '02',
     title: 'Design & build',
-    description: 'I handle everything — design, code, and copy guidance. You get regular updates, not endless revision rounds.',
+    description: "I take care of everything — design, code, copy direction. You'll see it taking shape as we go, not one big reveal at the end.",
   },
   {
     number: '03',
     title: 'Launch & handoff',
-    description: 'Your site goes live. You get the keys. No confusing contracts, no surprise invoices — just a site that works.',
+    description: "We go live. You get the code, the accounts, and a proper walkthrough — not a zip file and a goodbye.",
   },
 ]
 
 export const TESTIMONIALS_SECTION = {
   label: 'Kind words',
-  heading: "Don't take my word for it.",
+  heading: 'What clients say.',
 }
 
 export const TESTIMONIALS: Testimonial[] = [
@@ -116,9 +116,9 @@ export const TESTIMONIALS: Testimonial[] = [
 
 export const PRICING_SECTION = {
   label: 'Pricing',
-  heading: 'Straightforward pricing.',
-  subheading: "No vague quotes. No surprise add-ons. You'll know what you're getting before we start.",
-  note: "Not sure which fits? Let's figure it out on a call.",
+  heading: 'Fixed pricing. No hourly rates.',
+  subheading: "You'll know the cost before anything starts. No scope creep, no awkward conversations at the end.",
+  note: "Not sure which fits? We can work that out on a call.",
   cta: 'Book a call',
 }
 
@@ -127,7 +127,7 @@ export const PRICING_TIERS: PricingTier[] = [
     id: 'landing',
     name: 'Landing Page',
     price: '500',
-    description: 'One page, built to convert. Perfect for launches, personal brands, or a single focused goal.',
+    description: 'One focused page that does one thing well. Good for launches, personal brands, or anyone who needs a clean, credible presence without the complexity.',
     features: [
       'Custom design & code',
       'Mobile responsive',
@@ -140,7 +140,7 @@ export const PRICING_TIERS: PricingTier[] = [
     id: 'full',
     name: 'Full Website',
     price: '1,000',
-    description: "Up to 3 pages, custom designed and coded. Everything you need, nothing you don't.",
+    description: "A proper site with room to tell your story. Usually home, about, and contact — though we'll work out what actually makes sense for you.",
     features: [
       'Everything in Landing Page',
       'Up to 3 pages',
@@ -153,9 +153,9 @@ export const PRICING_TIERS: PricingTier[] = [
 ]
 
 export const CONTACT_SECTION = {
-  label: "Let's work together",
-  heading: "Let's build something.",
-  subheading: "Pick a time that works for you. We'll talk through your project — no pitch, no pressure.",
+  label: 'Start a project',
+  heading: 'Your site starts with a conversation.',
+  subheading: "Book a slot. We'll talk through what you need, what's realistic, and whether it's a good fit. Half an hour, no commitment.",
   calendlyUrl: 'https://calendly.com/benwinzer',
 }
 
