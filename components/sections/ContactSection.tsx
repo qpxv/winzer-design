@@ -17,7 +17,7 @@ export default function ContactSection() {
           variants={fadeUp}
         >
           <p className="text-accent-muted text-sm font-medium mb-4">{CONTACT_SECTION.label}</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="text-4xl md:text-5xl font-serif text-white mb-4">
             {CONTACT_SECTION.heading}
           </h2>
           <p className="text-white/60 text-base max-w-md mx-auto">{CONTACT_SECTION.subheading}</p>

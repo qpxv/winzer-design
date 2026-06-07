@@ -91,14 +91,14 @@ export default function HeroSection() {
 
       <div className="relative z-10 text-center max-w-4xl mx-auto px-6 flex flex-col items-center gap-6">
         <motion.h1
-          className="text-5xl md:text-7xl font-bold tracking-tight text-text-primary leading-tight"
+          className="text-5xl md:text-7xl font-serif tracking-tight text-text-primary leading-tight"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] }}
         >
           {HERO.headline}
           <br />
-          <span className="text-accent">{HERO.headlineAccent}</span>
+          <span className="text-accent italic">{HERO.headlineAccent}</span>
         </motion.h1>
 
         <motion.p

@@ -89,7 +89,7 @@ export default function PricingSection() {
           variants={fadeUp}
         >
           <p className="text-accent font-medium text-sm mb-3">{PRICING_SECTION.label}</p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-text-primary mb-4">
+          <h2 className="text-3xl md:text-4xl font-serif tracking-tight text-text-primary mb-4">
             {PRICING_SECTION.heading}
           </h2>
           <p className="text-text-secondary text-base max-w-xl mx-auto">

@@ -27,7 +27,7 @@ export default function ProcessSection() {
           variants={fadeUp}
         >
           <p className="text-accent font-medium text-sm mb-3">{PROCESS_SECTION.label}</p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-text-primary">
+          <h2 className="text-3xl md:text-4xl font-serif tracking-tight text-text-primary">
             {PROCESS_SECTION.heading}
           </h2>
         </motion.div>

@@ -38,11 +38,15 @@ Never hardcode hex values in components. Never add new tokens without adding the
 
 ### Typography
 
-- Font: **Inter** (loaded in `app/layout.tsx` via `next/font/google`, CSS var `--font-inter-var`)
-- Hero headline: `text-5xl md:text-7xl font-bold tracking-tight`
-- Section headings: `text-3xl md:text-4xl font-bold tracking-tight`
-- Section label (small accent line above heading): `text-accent font-medium text-sm`
-- Body copy: `text-base text-text-secondary`
+- **DM Serif Display** — headings only (`font-serif`). Weight 400 only; do not add `font-bold` to serif elements (browser synthesis looks bad). Available in normal and italic. CSS var: `--font-dm-serif`.
+- **DM Sans** — all body text, UI labels, buttons, nav (`font-sans` or default). Weights 100–900 all work. CSS var: `--font-dm-sans`.
+- Hero headline: `text-5xl md:text-7xl font-serif tracking-tight`
+- Hero accent word ("business."): `text-accent italic` — serif italic is intentional and defines the brand voice
+- Section headings (h2): `text-3xl md:text-4xl font-serif tracking-tight`
+- Contact heading: `text-4xl md:text-5xl font-serif`
+- Section label (small accent line above heading): `text-accent font-medium text-sm` — DM Sans
+- Body copy: `text-base text-text-secondary` — DM Sans
+- Any highlighted/branded word inside a heading should be `text-accent italic` (inherits serif from parent)
 
 ### Layout
 
