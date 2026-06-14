@@ -139,9 +139,34 @@ The hero has a floating project image grid with a mouse-parallax effect. Key det
 - **Section IDs** — `id="work"`, `id="process"`, `id="pricing"`, `id="contact"`. Nav links use `#work`, `#process`, `#pricing`. CTAs link to `#contact`.
 - **Calendly** — loaded via `<Script strategy="lazyOnload">` in ContactSection. URL in `lib/data.ts`.
 
+## Deployed Portfolio Sites (Vercel)
+
+Each portfolio project in `lib/data.ts` links to a live Vercel deployment. The naming convention is `winzer-<dirname>.vercel.app` where `<dirname>` is the folder name under `/Users/benwinzer/Desktop/Website Collection/websites/`.
+
+| Project (data.ts) | Directory | Live URL |
+|---|---|---|
+| VOLTA | `volta` | `https://winzer-volta.vercel.app` |
+| Anil Seth | `tedx` | `https://winzer-tedx.vercel.app` |
+| SnipVault | `snip-vault` | `https://winzer-snip-vault.vercel.app` |
+| Kai Nakamura | `photography` | `https://winzer-photography.vercel.app` |
+| Jot | `jot` | `https://winzer-jot.vercel.app` |
+| IRONSIDE | `ironside` | `https://winzer-ironside.vercel.app` |
+
+Two additional sites are deployed but not currently featured in the portfolio:
+
+| Directory | Live URL |
+|---|---|
+| `einaudi` | `https://winzer-einaudi.vercel.app` |
+| `root-and-rise` | `https://winzer-root-and-rise.vercel.app` |
+
+**To deploy a new site:** `cd` into its directory under `Website Collection/websites/` and run:
+```
+vercel --yes --prod --name winzer-<dirname>
+```
+Then add the resulting `https://winzer-<dirname>.vercel.app` URL to `lib/data.ts`.
+
 ## Placeholder Items (Ben to update before launch)
 
-1. `lib/data.ts` → `PROJECTS[*].url` — real live URLs (currently placeholder domains)
-2. `lib/data.ts` → `TESTIMONIALS` — real quotes, names, roles (currently placeholder text)
-3. `lib/data.ts` → `CONTACT_SECTION.calendlyUrl` — verify this is the correct Calendly link
-4. `lib/data.ts` → `FOOTER.email` — verify this is the correct email
+1. `lib/data.ts` → `TESTIMONIALS` — real quotes, names, roles (currently placeholder text)
+2. `lib/data.ts` → `CONTACT_SECTION.calendlyUrl` — verify this is the correct Calendly link
+3. `lib/data.ts` → `FOOTER.email` — verify this is the correct email
