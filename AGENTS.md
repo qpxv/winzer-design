@@ -76,11 +76,11 @@ components/
   ui/
     Button.tsx         # Shared button — variants: primary | secondary; sizes: default | sm
     SpotlightButton.tsx # Hero primary CTA only — spotlight glow on hover. Renders <a> with href or <button>. Uses useMotionValue for zero-rerender mouse tracking.
-    ProjectModal.tsx   # 'use client' — full-screen iframe overlay for work items
+    ProjectModal.tsx   # 'use client' — full-screen iframe overlay for work items; shows spinner until iframe loads
   sections/
     NavBar.tsx         # 'use client' — sticky, scroll-blur on >20px
     HeroSection.tsx    # 'use client' — parallax image grid + headline + CTAs
-    WorkSection.tsx    # 'use client' — 3×2 project card grid, opens ProjectModal
+    WorkSection.tsx    # 'use client' — 3×2 project card grid with items-start, opens ProjectModal
     ProcessSection.tsx # 'use client' — 3-step grid with step numbers
     TestimonialsSection.tsx  # 'use client' — 3-card testimonial grid
     PricingSection.tsx # 'use client' — 2-tier pricing cards
@@ -100,7 +100,7 @@ types/
 
 The hero has a floating project image grid with a mouse-parallax effect. Key details:
 
-- **Images**: 6 project screenshots in `public/projects/` (real PNGs, wired to `PROJECTS` array). Rendered via `next/image` with `width={1663} height={950} className="w-full h-auto"` — no cropping, natural aspect ratio.
+- **Images**: 6 project screenshots in `public/projects/` named `*-work.png` (hero uses the same images as the work grid). Rendered via `next/image` with per-image `width={project.imageWidth}` and `height={project.imageHeight}` from `lib/data.ts`, `className="w-full h-auto"`, and `priority` (above the fold). Exact pixel dimensions stored on the `Project` interface — do not hardcode dimensions.
 - **Parallax**: `useMotionValue` + `useSpring` (stiffness: 60, damping: 20) track the mouse position. Each image is a `CubeCard` component that calls `useTransform` to scale the spring by its own `depth` value (0.4–1.2). Deeper images move more. **Do NOT use CSS transitions or `onMouseMove` + CSS custom properties for this** — it causes a snap on cursor stop.
 - **CubeCard**: must be its own component (not inline in `.map()`) so `useTransform` is a valid hook call.
 - **No float animation** — the old `animate={{ y: [0, -12, 0] }}` loop has been removed.
@@ -124,7 +124,7 @@ The hero has a floating project image grid with a mouse-parallax effect. Key det
 
 - `NAV` — logo text, link labels, CTA label
 - `HERO` — headline, headlineAccent, subheadline, cta, ctaSecondary
-- `WORK_SECTION` + `PROJECTS` — 6 portfolio projects with id/name/tagline/url/image
+- `WORK_SECTION` + `PROJECTS` — 6 portfolio projects with id/name/tagline/url/image/imageWidth/imageHeight
 - `PROCESS_SECTION` + `PROCESS_STEPS` — 3 process steps
 - `TESTIMONIALS_SECTION` + `TESTIMONIALS` — 3 testimonial cards (placeholders until Ben fills in real ones)
 - `PRICING_SECTION` + `PRICING_TIERS` — Landing Page (£500) and Full Website (£1,000)

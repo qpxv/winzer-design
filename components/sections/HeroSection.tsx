@@ -24,7 +24,7 @@ const CUBE_CONFIGS: CubeConfig[] = [
   { project: PROJECTS[5], depth: 0.4, top: '82%', left: '35%', width: 'w-40' },
 ]
 
-function CubeImage({ src, name }: { src: string; name: string }) {
+function CubeImage({ src, name, width, height }: { src: string; name: string; width: number; height: number }) {
   const [errored, setErrored] = useState(false)
 
   if (errored) {
@@ -39,8 +39,9 @@ function CubeImage({ src, name }: { src: string; name: string }) {
     <Image
       src={src}
       alt={name}
-      width={1663}
-      height={950}
+      width={width}
+      height={height}
+      priority
       className="w-full h-auto"
       onError={() => setErrored(true)}
       sizes="(max-width: 768px) 0px, 260px"
@@ -65,7 +66,7 @@ function CubeCard({
       className={`absolute ${cfg.width} rounded-lg shadow-[0_4px_24px_rgba(124,58,237,0.25)] overflow-hidden`}
       style={{ top: cfg.top, left: cfg.left, x, y }}
     >
-      <CubeImage src={cfg.project.image} name={cfg.project.name} />
+      <CubeImage src={cfg.project.image} name={cfg.project.name} width={cfg.project.imageWidth} height={cfg.project.imageHeight} />
     </motion.div>
   )
 }

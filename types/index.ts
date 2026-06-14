@@ -4,6 +4,8 @@ export interface Project {
   tagline: string
   url: string
   image: string
+  imageWidth: number
+  imageHeight: number
 }
 
 export interface ProcessStep {

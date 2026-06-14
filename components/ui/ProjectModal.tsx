@@ -12,12 +12,14 @@ interface ProjectModalProps {
 
 export default function ProjectModal({ project, onClose }: ProjectModalProps) {
   const [iframeError, setIframeError] = useState(false)
+  const [iframeLoaded, setIframeLoaded] = useState(false)
   const iframeRef = useRef<HTMLIFrameElement>(null)
 
   useEffect(() => {
     if (!project) return
 
     setIframeError(false)
+    setIframeLoaded(false)
     document.body.style.overflow = 'hidden'
 
     const handleKeydown = (e: KeyboardEvent) => {
@@ -74,7 +76,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               </div>
             </div>
 
-            <div className="flex-1 min-h-0">
+            <div className="relative flex-1 min-h-0">
               {iframeError ? (
                 <div className="flex flex-col items-center justify-center h-full gap-4 text-text-secondary">
                   <p className="text-base">This site can't be embedded in a preview.</p>
@@ -89,15 +91,24 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   </a>
                 </div>
               ) : (
-                <iframe
-                  ref={iframeRef}
-                  src={project.url}
-                  width="100%"
-                  height="100%"
-                  className="border-0"
-                  onError={() => setIframeError(true)}
-                  title={project.name}
-                />
+                <>
+                  {!iframeLoaded && (
+                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-bg">
+                      <div className="w-8 h-8 rounded-full border-2 border-border border-t-accent animate-spin" />
+                      <p className="text-sm text-text-muted">Loading</p>
+                    </div>
+                  )}
+                  <iframe
+                    ref={iframeRef}
+                    src={project.url}
+                    width="100%"
+                    height="100%"
+                    className="border-0"
+                    onLoad={() => setIframeLoaded(true)}
+                    onError={() => setIframeError(true)}
+                    title={project.name}
+                  />
+                </>
               )}
             </div>
           </motion.div>

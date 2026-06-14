@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { staggerContainer, fadeUp } from '@/lib/animations'
 import { WORK_SECTION, PROJECTS } from '@/lib/data'
@@ -17,12 +18,17 @@ function ProjectCard({
   return (
     <motion.div
       variants={fadeUp}
-      className="group relative rounded-2xl overflow-hidden cursor-pointer bg-surface aspect-video"
+      className="group relative rounded-2xl overflow-hidden cursor-pointer bg-surface"
       onClick={() => onOpen(project)}
     >
-      <div className="w-full h-full bg-surface flex items-center justify-center text-text-muted text-sm select-none">
-        {project.name}
-      </div>
+      <Image
+        src={project.image}
+        alt={project.name}
+        width={project.imageWidth}
+        height={project.imageHeight}
+        className="w-full h-auto block"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      />
 
       <div className="absolute inset-0 bg-text-primary/80 flex flex-col justify-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <p className="text-white font-semibold text-lg">{project.name}</p>
@@ -55,7 +61,7 @@ export default function WorkSection() {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
