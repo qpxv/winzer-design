@@ -14,6 +14,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
   const [iframeError, setIframeError] = useState(false)
   const [iframeLoaded, setIframeLoaded] = useState(false)
   const iframeRef = useRef<HTMLIFrameElement>(null)
+  const panelRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (!project) return
@@ -48,11 +49,17 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           />
           <motion.div
             key="panel"
+            ref={panelRef}
             className="fixed inset-4 md:inset-8 bg-bg rounded-2xl overflow-hidden flex flex-col z-50"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 40 }}
             transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] }}
+            onAnimationComplete={(definition) => {
+              if (definition === 'animate' && panelRef.current) {
+                panelRef.current.style.transform = 'none'
+              }
+            }}
           >
             <div className="flex items-center justify-between px-5 h-12 border-b border-border shrink-0">
               <span className="font-semibold text-text-primary">{project.name}</span>
