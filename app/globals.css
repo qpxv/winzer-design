@@ -2,9 +2,9 @@
 
 @theme {
   /* Base */
-  --color-bg: #ffffff;
-  --color-surface: #f7f7f8;
-  --color-border: #e8e8ec;
+  --color-bg: #f8f7ff;
+  --color-surface: #f2f0ff;
+  --color-border: #e4e0f5;
 
   /* Text */
   --color-text-primary: #0a0a0b;
@@ -31,6 +31,6 @@ html {
 
 body {
   font-family: var(--font-dm-sans), sans-serif;
-  background-color: #ffffff;
+  background-color: #f8f7ff;
   color: #0a0a0b;
 }

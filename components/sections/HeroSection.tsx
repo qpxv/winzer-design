@@ -58,8 +58,8 @@ function CubeCard({
   springX: MotionValue<number>
   springY: MotionValue<number>
 }) {
-  const x = useTransform(springX, (v) => v * cfg.depth * 18)
-  const y = useTransform(springY, (v) => v * cfg.depth * 18)
+  const x = useTransform(springX, (v) => v * cfg.depth * 8)
+  const y = useTransform(springY, (v) => v * cfg.depth * 8)
 
   return (
     <motion.div

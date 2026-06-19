@@ -23,9 +23,9 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 | Token | Value | Tailwind class |
 |---|---|---|
-| `--color-bg` | `#ffffff` | `bg-bg`, `text-bg` |
-| `--color-surface` | `#f7f7f8` | `bg-surface` |
-| `--color-border` | `#e8e8ec` | `border-border` |
+| `--color-bg` | `#f8f7ff` | `bg-bg`, `text-bg` |
+| `--color-surface` | `#f2f0ff` | `bg-surface` |
+| `--color-border` | `#e4e0f5` | `border-border` |
 | `--color-text-primary` | `#0a0a0b` | `text-text-primary` |
 | `--color-text-secondary` | `#6b6b80` | `text-text-secondary` |
 | `--color-text-muted` | `#a0a0b0` | `text-text-muted` |
@@ -80,7 +80,7 @@ components/
   sections/
     NavBar.tsx         # 'use client' — sticky, scroll-blur on >20px
     HeroSection.tsx    # 'use client' — parallax image grid + headline + CTAs
-    WorkSection.tsx    # 'use client' — 3×2 project card grid with items-start, opens ProjectModal
+    WorkSection.tsx    # 'use client' — mosaic 3-column layout (2 cards per col, flex-col gap-[10px], items-start), opens ProjectModal
     ProcessSection.tsx # 'use client' — 3-step grid with step numbers
     TestimonialsSection.tsx  # 'use client' — 3-card testimonial grid
     PricingSection.tsx # 'use client' — 2-tier pricing cards
@@ -101,7 +101,7 @@ types/
 The hero has a floating project image grid with a mouse-parallax effect. Key details:
 
 - **Images**: 6 project screenshots in `public/projects/` named `*-work.png` (hero uses the same images as the work grid). Rendered via `next/image` with per-image `width={project.imageWidth}` and `height={project.imageHeight}` from `lib/data.ts`, `className="w-full h-auto"`, and `priority` (above the fold). Exact pixel dimensions stored on the `Project` interface — do not hardcode dimensions.
-- **Parallax**: `useMotionValue` + `useSpring` (stiffness: 60, damping: 20) track the mouse position. Each image is a `CubeCard` component that calls `useTransform` to scale the spring by its own `depth` value (0.4–1.2). Deeper images move more. **Do NOT use CSS transitions or `onMouseMove` + CSS custom properties for this** — it causes a snap on cursor stop.
+- **Parallax**: `useMotionValue` + `useSpring` (stiffness: 60, damping: 20) track the mouse position. Each image is a `CubeCard` component that calls `useTransform` to scale the spring by `v * cfg.depth * 8` (multiplier is 8 — intentionally subtle). Deeper images move more. **Do NOT use CSS transitions or `onMouseMove` + CSS custom properties for this** — it causes a snap on cursor stop.
 - **CubeCard**: must be its own component (not inline in `.map()`) so `useTransform` is a valid hook call.
 - **No float animation** — the old `animate={{ y: [0, -12, 0] }}` loop has been removed.
 - **Image styles**: `rounded-lg`, `shadow-[0_4px_24px_rgba(124,58,237,0.25)]`, no opacity.

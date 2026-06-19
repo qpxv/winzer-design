@@ -61,14 +61,26 @@ export default function WorkSection() {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
           variants={staggerContainer}
         >
-          {PROJECTS.map((project) => (
-            <ProjectCard key={project.id} project={project} onOpen={setActiveProject} />
+          {[
+            [PROJECTS[0], PROJECTS[3]],
+            [PROJECTS[1], PROJECTS[4]],
+            [PROJECTS[2], PROJECTS[5]],
+          ].map((col, ci) => (
+            <motion.div
+              key={ci}
+              variants={fadeUp}
+              className="flex flex-col gap-[10px]"
+            >
+              {col.map((project) => project && (
+                <ProjectCard key={project.id} project={project} onOpen={setActiveProject} />
+              ))}
+            </motion.div>
           ))}
         </motion.div>
       </div>
