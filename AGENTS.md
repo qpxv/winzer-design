@@ -81,7 +81,7 @@ components/
     NavBar.tsx         # 'use client' — sticky, scroll-blur on >20px
     HeroSection.tsx    # 'use client' — parallax image grid + headline + CTAs
     WorkSection.tsx    # 'use client' — mosaic 3-column layout (2 cards per col, flex-col gap-[10px], items-start), opens ProjectModal
-    ProcessSection.tsx # 'use client' — 3-step grid with step numbers
+    ProcessSection.tsx # 'use client' — 3 clickable cards (serif watermark number, hover glow) in a horizontal flex row; connected by two mirrored curvy SVG lines (first dips down, second arcs up, no arrowhead); click opens inline ProcessStepModal with description + detail field
     TestimonialsSection.tsx  # 'use client' — 3-card testimonial grid
     PricingSection.tsx # 'use client' — 2-tier pricing cards
     ContactSection.tsx # 'use client' — Calendly embed on dark bg
@@ -125,7 +125,7 @@ The hero has a floating project image grid with a mouse-parallax effect. Key det
 - `NAV` — logo text, link labels, CTA label
 - `HERO` — headline, headlineAccent, subheadline, cta, ctaSecondary
 - `WORK_SECTION` + `PROJECTS` — 6 portfolio projects with id/name/tagline/url/image/imageWidth/imageHeight
-- `PROCESS_SECTION` + `PROCESS_STEPS` — 3 process steps
+- `PROCESS_SECTION` + `PROCESS_STEPS` — 3 process steps; each has `number`, `title`, `description` (card summary), `detail` (modal body — multi-paragraph, uses `\n\n`, rendered with `whitespace-pre-line`)
 - `TESTIMONIALS_SECTION` + `TESTIMONIALS` — 3 testimonial cards (placeholders until Ben fills in real ones)
 - `PRICING_SECTION` + `PRICING_TIERS` — Landing Page (£500) and Full Website (£1,000)
 - `CONTACT_SECTION` — label, heading, subheading, calendlyUrl

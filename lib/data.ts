@@ -87,16 +87,19 @@ export const PROCESS_STEPS: ProcessStep[] = [
     number: '01',
     title: 'Discovery call',
     description: "A 30-minute conversation to understand what you actually need. I'll tell you honestly if I think I can help — and how. No sales pitch.",
+    detail: "We start with a 30-minute video call — no preparation needed on your end. I'll ask about your goals, your audience, what currently exists, and what hasn't worked before.\n\nBy the end of the call, you'll know exactly what I'd build, roughly what it'll cost, and when it could be done. If I don't think I'm the right fit, I'll tell you.\n\nThere's no obligation, no pitch deck, and no follow-up sequence. Just an honest conversation about whether we're a good match.",
   },
   {
     number: '02',
     title: 'Design & build',
     description: "I take care of everything — design, code, copy direction. You'll see it taking shape as we go, not one big reveal at the end.",
+    detail: "Once we've agreed on scope and I have your deposit, I get to work. I handle the whole thing — visual design, layout, code, and copy direction. If you have a brand, I'll work from it. If you don't, I'll establish one that fits.\n\nYou'll see the work in progress through shared previews, not a zip file at the end. Most projects need one or two rounds of feedback, not ten.\n\nI won't disappear for three weeks. You'll know where things are.",
   },
   {
     number: '03',
     title: 'Launch & handoff',
     description: "We go live. You get the code, the accounts, and a proper walkthrough — not a zip file and a goodbye.",
+    detail: "When you're happy with the result, we go live. I handle the domain connection, hosting setup, and final checks before anything goes public.\n\nAfter launch, you get the source code in a GitHub repo, access to every account and service used, and a walkthrough call so you actually understand what you own.\n\nI'm available for questions after handoff. Not indefinitely — but I won't ghost you the moment the final invoice clears.",
   },
 ]
 
