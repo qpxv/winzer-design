@@ -40,7 +40,7 @@ export default function NavBar() {
         </nav>
 
         <div className="hidden md:block">
-          <Button variant="primary" size="sm" href="#contact">
+          <Button variant="primary" size="sm" onClick={() => window.dispatchEvent(new CustomEvent('open-calendly'))}>
             {NAV.cta}
           </Button>
         </div>
@@ -69,8 +69,7 @@ export default function NavBar() {
           <Button
             variant="primary"
             size="sm"
-            href="#contact"
-            onClick={() => setMobileOpen(false)}
+            onClick={() => { setMobileOpen(false); window.dispatchEvent(new CustomEvent('open-calendly')) }}
           >
             {NAV.cta}
           </Button>

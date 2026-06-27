@@ -6,6 +6,7 @@ import TestimonialsSection from '@/components/sections/TestimonialsSection'
 import PricingSection from '@/components/sections/PricingSection'
 import ContactSection from '@/components/sections/ContactSection'
 import FooterSection from '@/components/sections/FooterSection'
+import CalendlyModal from '@/components/ui/CalendlyModal'
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <PricingSection />
       <ContactSection />
       <FooterSection />
+      <CalendlyModal />
     </main>
   )
 }

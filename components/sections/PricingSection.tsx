@@ -46,11 +46,11 @@ function PricingColumn({ tier, isFirst }: { tier: PricingTier; isFirst: boolean 
       </ul>
 
       {tier.highlighted ? (
-        <SpotlightButton href="#contact" className="w-full justify-center">
+        <SpotlightButton onClick={() => window.dispatchEvent(new CustomEvent('open-calendly'))} className="w-full justify-center">
           {PRICING_SECTION.cta}
         </SpotlightButton>
       ) : (
-        <Button variant="secondary" href="#contact" className="w-full">
+        <Button variant="secondary" onClick={() => window.dispatchEvent(new CustomEvent('open-calendly'))} className="w-full">
           {PRICING_SECTION.cta}
         </Button>
       )}

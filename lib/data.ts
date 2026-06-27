@@ -171,7 +171,8 @@ export const CONTACT_SECTION = {
   label: 'Start a project',
   heading: 'Your site starts with a conversation.',
   subheading: "Book a slot. We'll talk through what you need, what's realistic, and whether it's a good fit. Half an hour, no commitment.",
-  calendlyUrl: 'https://calendly.com/benwinzer',
+  cta: 'Book a free call',
+  calendlyUrl: 'https://calendly.com/benwinzer/website-call?hide_gdpr_banner=1',
 }
 
 export const FOOTER = {

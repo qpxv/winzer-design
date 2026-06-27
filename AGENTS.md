@@ -75,16 +75,17 @@ app/
 components/
   ui/
     Button.tsx         # Shared button — variants: primary | secondary; sizes: default | sm
-    SpotlightButton.tsx # Hero primary CTA only — spotlight glow on hover. Renders <a> with href or <button>. Uses useMotionValue for zero-rerender mouse tracking.
+    SpotlightButton.tsx # High-emphasis CTA — spotlight glow on hover. Renders <a> with href or <button>. Used in: hero, pricing highlighted tier, contact section.
     ProjectModal.tsx   # 'use client' — full-screen iframe overlay for work items; shows spinner until iframe loads
+    CalendlyModal.tsx  # 'use client' — always-mounted booking popup; listens for 'open-calendly' CustomEvent on window; backdrop + centered panel; Calendly iframe scrollbar hidden via width-overflow clip trick (width: calc(100% + 20px) inside overflow-hidden wrapper)
   sections/
     NavBar.tsx         # 'use client' — sticky, scroll-blur on >20px
     HeroSection.tsx    # 'use client' — parallax image grid + headline + CTAs
     WorkSection.tsx    # 'use client' — mosaic 3-column layout (2 cards per col, flex-col gap-[10px], items-start), opens ProjectModal
     ProcessSection.tsx # 'use client' — 3 clickable cards (serif watermark number, hover glow) in a horizontal flex row; connected by two mirrored curvy SVG lines (first dips down, second arcs up, no arrowhead); click opens inline ProcessStepModal with description + detail field
-    TestimonialsSection.tsx  # 'use client' — ruled-row list (no cards); quote left col, serif italic name + muted role right col; bg-bg; whitespace-pre-line on quote for \n\n paragraph breaks
-    PricingSection.tsx # 'use client' — single unified panel (bg-bg border rounded-2xl), two columns divided by border-r; highlighted tier gets h-0.5 accent stripe at top; price in large font-serif; tier name in font-serif italic text-accent; ghost Button on lower tier, SpotlightButton on highlighted tier
-    ContactSection.tsx # 'use client' — Calendly embed on dark bg
+    TestimonialsSection.tsx  # 'use client' — 3-column grid (no cards), each column: first paragraph of quote only (split on \n\n), serif italic name + muted role below; bg-bg; columns divided by divide-x divide-border on md
+    PricingSection.tsx # 'use client' — single unified panel (bg-bg border rounded-2xl), two columns divided by border-r; highlighted tier gets h-0.5 accent stripe at top; price in large font-serif with DollarSign icon; tier name in font-serif italic text-accent; ghost Button on lower tier, SpotlightButton on highlighted tier; all CTAs dispatch 'open-calendly' event
+    ContactSection.tsx # 'use client' — dark bg (bg-text-primary), heading + subheading + SpotlightButton that dispatches 'open-calendly'; no Calendly embed (popup handles booking)
     FooterSection.tsx  # server — logo, email, tagline
 
 lib/
@@ -111,7 +112,7 @@ The hero has a floating project image grid with a mouse-parallax effect. Key det
 
 ## SpotlightButton — Implementation Notes
 
-- Used for the hero primary CTA and the highlighted tier CTA in PricingSection. All other buttons use `Button.tsx`.
+- Used for high-emphasis CTAs: hero primary, pricing highlighted tier, and ContactSection. All other buttons use `Button.tsx`.
 - Mouse tracking: `onMouseMove` writes `--x`/`--y` directly via `ref.current.style.setProperty` — zero React re-renders.
 - `hovered` boolean state toggles only on `onMouseEnter`/`onMouseLeave` — only used for opacity transitions.
 - Spotlight overlay: `radial-gradient(circle 130px at var(--x) var(--y))` fades in 150ms, out 300ms.
@@ -127,17 +128,19 @@ The hero has a floating project image grid with a mouse-parallax effect. Key det
 - `WORK_SECTION` + `PROJECTS` — 6 portfolio projects with id/name/tagline/url/image/imageWidth/imageHeight
 - `PROCESS_SECTION` + `PROCESS_STEPS` — 3 process steps; each has `number`, `title`, `description` (card summary), `detail` (modal body — multi-paragraph, uses `\n\n`, rendered with `whitespace-pre-line`)
 - `TESTIMONIALS_SECTION` + `TESTIMONIALS` — 3 real client testimonials (quote, name, role); quotes support `\n\n` paragraph breaks
-- `PRICING_SECTION` + `PRICING_TIERS` — Landing Page (£500) and Full Website (£1,000)
-- `CONTACT_SECTION` — label, heading, subheading, calendlyUrl
+- `PRICING_SECTION` + `PRICING_TIERS` — Landing Page ($500) and Full Website ($1,000); currency rendered as `<DollarSign />` icon
+- `CONTACT_SECTION` — label, heading, subheading, cta, calendlyUrl (includes `?hide_gdpr_banner=1`)
 - `FOOTER` — logo, email, note, copyright
 
 ## Key Conventions
 
 - `'use client'` — required on any component using hooks, browser APIs, or event handlers. All section components currently need it due to Framer Motion `whileInView`.
 - **Framer Motion** — always `whileInView` with `viewport={{ once: true, margin: '-80px' }}`. Stagger with `staggerContainer` + `fadeUp` from `lib/animations.ts`.
-- **Button** — always use `<Button>` from `components/ui/Button.tsx`. `SpotlightButton` is reserved for high-emphasis CTAs: the hero primary CTA and the highlighted pricing tier CTA.
-- **Section IDs** — `id="work"`, `id="process"`, `id="pricing"`, `id="contact"`. Nav links use `#work`, `#process`, `#pricing`. CTAs link to `#contact`.
-- **Calendly** — loaded via `<Script strategy="lazyOnload">` in ContactSection. URL in `lib/data.ts`.
+- **Button** — always use `<Button>` from `components/ui/Button.tsx`. `SpotlightButton` is reserved for high-emphasis CTAs: hero, pricing highlighted tier, contact section.
+- **CTA booking flow** — all "Book a call" buttons dispatch `window.dispatchEvent(new CustomEvent('open-calendly'))`. Never link to `#contact` for booking. `CalendlyModal` listens for this event and opens the popup.
+- **Section IDs** — `id="work"`, `id="process"`, `id="pricing"`, `id="contact"`. Nav links use `#work`, `#process`, `#pricing`.
+- **Calendly** — Script loaded in `app/layout.tsx` via `strategy="afterInteractive"` (preloads with page). URL + cookie param in `lib/data.ts`. `CalendlyModal` is always mounted (never conditionally rendered) so the embed stays alive across open/close cycles.
+- **Scrollbar** — `scrollbar-gutter: stable` on `html` prevents layout shift on modal open. Custom thin purple scrollbar via `::-webkit-scrollbar` in `globals.css`.
 
 ## Deployed Portfolio Sites (Vercel)
 
