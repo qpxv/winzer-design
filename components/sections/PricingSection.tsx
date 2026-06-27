@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Check } from 'lucide-react'
+import { Check, DollarSign } from 'lucide-react'
 import { fadeUp } from '@/lib/animations'
 import { PRICING_SECTION, PRICING_TIERS } from '@/lib/data'
 import Button from '@/components/ui/Button'
@@ -26,7 +26,7 @@ function PricingColumn({ tier, isFirst }: { tier: PricingTier; isFirst: boolean 
       <div className="flex flex-col gap-3">
         <p className="font-serif italic text-accent text-sm">{tier.name}</p>
         <div className="flex items-start gap-1">
-          <span className="font-serif text-xl text-text-secondary mt-2">£</span>
+          <DollarSign size={16} className="text-text-secondary mt-3 shrink-0" />
           <span className="font-serif text-5xl md:text-6xl tracking-tight text-text-primary leading-none">
             {tier.price}
           </span>

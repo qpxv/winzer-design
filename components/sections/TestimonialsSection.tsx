@@ -5,19 +5,21 @@ import { staggerContainer, fadeUp } from '@/lib/animations'
 import { TESTIMONIALS_SECTION, TESTIMONIALS } from '@/lib/data'
 import type { Testimonial } from '@/types'
 
-function TestimonialRow({ testimonial }: { testimonial: Testimonial }) {
+function TestimonialColumn({ testimonial }: { testimonial: Testimonial }) {
+  const firstParagraph = testimonial.quote.trim().split('\n\n')[0]
+
   return (
     <motion.div
       variants={fadeUp}
-      className="grid grid-cols-1 md:grid-cols-[1fr_180px] gap-6 md:gap-12 border-t border-border py-10 md:py-12"
+      className="px-8 py-2 first:pl-0 last:pr-0 flex flex-col gap-4"
     >
-      <p className="text-text-primary text-base md:text-lg leading-relaxed whitespace-pre-line">
+      <p className="text-text-secondary text-base leading-relaxed flex-1">
         <span className="text-accent">&ldquo;</span>
-        {testimonial.quote.trim()}&rdquo;
+        {firstParagraph}&rdquo;
       </p>
-      <div className="md:text-right md:pt-1">
+      <div>
         <p className="font-serif italic text-accent text-sm leading-snug">{testimonial.name}</p>
-        <p className="text-text-muted text-sm mt-1">{testimonial.role}</p>
+        <p className="text-text-muted text-xs mt-0.5">{testimonial.role}</p>
       </div>
     </motion.div>
   )
@@ -45,10 +47,10 @@ export default function TestimonialsSection() {
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
           variants={staggerContainer}
-          className="border-b border-border"
+          className="grid grid-cols-1 md:grid-cols-3 divide-y divide-border md:divide-y-0 md:divide-x md:divide-border"
         >
           {TESTIMONIALS.map((t) => (
-            <TestimonialRow key={t.id} testimonial={t} />
+            <TestimonialColumn key={t.id} testimonial={t} />
           ))}
         </motion.div>
       </div>
