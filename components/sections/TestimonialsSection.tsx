@@ -1,26 +1,23 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Sparkles } from 'lucide-react'
 import { staggerContainer, fadeUp } from '@/lib/animations'
 import { TESTIMONIALS_SECTION, TESTIMONIALS } from '@/lib/data'
 import type { Testimonial } from '@/types'
 
-function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
+function TestimonialRow({ testimonial }: { testimonial: Testimonial }) {
   return (
     <motion.div
       variants={fadeUp}
-      className="bg-bg border border-border rounded-2xl p-6 flex flex-col gap-4"
+      className="grid grid-cols-1 md:grid-cols-[1fr_180px] gap-6 md:gap-12 border-t border-border py-10 md:py-12"
     >
-      <div className="flex gap-1 text-accent">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <Sparkles key={i} size={14} />
-        ))}
-      </div>
-      <p className="text-text-primary text-base flex-1">&ldquo;{testimonial.quote}&rdquo;</p>
-      <div>
-        <p className="font-semibold text-text-primary">{testimonial.name}</p>
-        <p className="text-sm text-text-secondary">{testimonial.role}</p>
+      <p className="text-text-primary text-base md:text-lg leading-relaxed whitespace-pre-line">
+        <span className="text-accent">&ldquo;</span>
+        {testimonial.quote.trim()}&rdquo;
+      </p>
+      <div className="md:text-right md:pt-1">
+        <p className="font-serif italic text-accent text-sm leading-snug">{testimonial.name}</p>
+        <p className="text-text-muted text-sm mt-1">{testimonial.role}</p>
       </div>
     </motion.div>
   )
@@ -44,14 +41,14 @@ export default function TestimonialsSection() {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-6"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
           variants={staggerContainer}
+          className="border-b border-border"
         >
           {TESTIMONIALS.map((t) => (
-            <TestimonialCard key={t.id} testimonial={t} />
+            <TestimonialRow key={t.id} testimonial={t} />
           ))}
         </motion.div>
       </div>

@@ -2,78 +2,59 @@
 
 import { motion } from 'framer-motion'
 import { Check } from 'lucide-react'
-import { staggerContainer, fadeUp } from '@/lib/animations'
+import { fadeUp } from '@/lib/animations'
 import { PRICING_SECTION, PRICING_TIERS } from '@/lib/data'
 import Button from '@/components/ui/Button'
+import SpotlightButton from '@/components/ui/SpotlightButton'
 import { cn } from '@/lib/utils'
 import type { PricingTier } from '@/types'
 
-function PricingCard({ tier }: { tier: PricingTier }) {
-  const highlighted = tier.highlighted ?? false
-
+function PricingColumn({ tier, isFirst }: { tier: PricingTier; isFirst: boolean }) {
   return (
-    <motion.div
-      variants={fadeUp}
+    <div
       className={cn(
-        'rounded-2xl p-8 flex flex-col gap-6',
-        highlighted
-          ? 'bg-accent text-white'
-          : 'bg-bg border border-border text-text-primary',
+        'relative p-8 flex flex-col gap-6',
+        isFirst
+          ? 'border-b border-border md:border-b-0 md:border-r md:border-border'
+          : '',
       )}
     >
-      <div>
-        <p
-          className={cn(
-            'font-semibold text-base mb-1',
-            highlighted ? 'text-white/80' : 'text-text-secondary',
-          )}
-        >
-          {tier.name}
-        </p>
-        <div className="flex items-baseline gap-1">
-          <span className={cn('text-sm', highlighted ? 'text-white/70' : 'text-text-secondary')}>
-            from £
+      {tier.highlighted && (
+        <div className="absolute top-0 inset-x-0 h-0.5 bg-accent" />
+      )}
+
+      <div className="flex flex-col gap-3">
+        <p className="font-serif italic text-accent text-sm">{tier.name}</p>
+        <div className="flex items-start gap-1">
+          <span className="font-serif text-xl text-text-secondary mt-2">£</span>
+          <span className="font-serif text-5xl md:text-6xl tracking-tight text-text-primary leading-none">
+            {tier.price}
           </span>
-          <span className="text-4xl font-bold">{tier.price}</span>
         </div>
+        <p className="text-text-secondary text-sm leading-relaxed">{tier.description}</p>
       </div>
 
-      <p className={cn('text-sm', highlighted ? 'text-white/80' : 'text-text-secondary')}>
-        {tier.description}
-      </p>
+      <div className="border-t border-border" />
 
       <ul className="flex flex-col gap-3 flex-1">
         {tier.features.map((feature) => (
           <li key={feature} className="flex items-start gap-3">
-            <Check
-              size={16}
-              className={cn(
-                'shrink-0 mt-0.5',
-                highlighted ? 'text-white' : 'text-accent',
-              )}
-            />
-            <span className={cn('text-sm', highlighted ? 'text-white/90' : 'text-text-secondary')}>
-              {feature}
-            </span>
+            <Check size={14} className="text-text-muted shrink-0 mt-0.5" />
+            <span className="text-sm text-text-secondary">{feature}</span>
           </li>
         ))}
       </ul>
 
-      <div>
-        {highlighted ? (
-          <a
-            href="#contact"
-            className="inline-flex w-full items-center justify-center px-6 py-3 rounded-full font-semibold text-base bg-white text-accent hover:bg-accent-light transition-colors duration-200"
-          >
-            {PRICING_SECTION.cta}
-          </a>
-        ) : (
-          <Button variant="primary" href="#contact" className="w-full">
-            {PRICING_SECTION.cta}
-          </Button>
-        )}
-      </div>
-    </motion.div>
+      {tier.highlighted ? (
+        <SpotlightButton href="#contact" className="w-full justify-center">
+          {PRICING_SECTION.cta}
+        </SpotlightButton>
+      ) : (
+        <Button variant="secondary" href="#contact" className="w-full">
+          {PRICING_SECTION.cta}
+        </Button>
+      )}
+    </div>
   )
 }
 
@@ -98,14 +79,14 @@ export default function PricingSection() {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto"
+          className="bg-bg border border-border rounded-2xl overflow-hidden max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
-          variants={staggerContainer}
+          variants={fadeUp}
         >
-          {PRICING_TIERS.map((tier) => (
-            <PricingCard key={tier.id} tier={tier} />
+          {PRICING_TIERS.map((tier, i) => (
+            <PricingColumn key={tier.id} tier={tier} isFirst={i === 0} />
           ))}
         </motion.div>
 

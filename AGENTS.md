@@ -82,8 +82,8 @@ components/
     HeroSection.tsx    # 'use client' — parallax image grid + headline + CTAs
     WorkSection.tsx    # 'use client' — mosaic 3-column layout (2 cards per col, flex-col gap-[10px], items-start), opens ProjectModal
     ProcessSection.tsx # 'use client' — 3 clickable cards (serif watermark number, hover glow) in a horizontal flex row; connected by two mirrored curvy SVG lines (first dips down, second arcs up, no arrowhead); click opens inline ProcessStepModal with description + detail field
-    TestimonialsSection.tsx  # 'use client' — 3-card testimonial grid
-    PricingSection.tsx # 'use client' — 2-tier pricing cards
+    TestimonialsSection.tsx  # 'use client' — ruled-row list (no cards); quote left col, serif italic name + muted role right col; bg-bg; whitespace-pre-line on quote for \n\n paragraph breaks
+    PricingSection.tsx # 'use client' — single unified panel (bg-bg border rounded-2xl), two columns divided by border-r; highlighted tier gets h-0.5 accent stripe at top; price in large font-serif; tier name in font-serif italic text-accent; ghost Button on lower tier, SpotlightButton on highlighted tier
     ContactSection.tsx # 'use client' — Calendly embed on dark bg
     FooterSection.tsx  # server — logo, email, tagline
 
@@ -111,7 +111,7 @@ The hero has a floating project image grid with a mouse-parallax effect. Key det
 
 ## SpotlightButton — Implementation Notes
 
-- Used **only** for the hero primary CTA. All other buttons use `Button.tsx`.
+- Used for the hero primary CTA and the highlighted tier CTA in PricingSection. All other buttons use `Button.tsx`.
 - Mouse tracking: `onMouseMove` writes `--x`/`--y` directly via `ref.current.style.setProperty` — zero React re-renders.
 - `hovered` boolean state toggles only on `onMouseEnter`/`onMouseLeave` — only used for opacity transitions.
 - Spotlight overlay: `radial-gradient(circle 130px at var(--x) var(--y))` fades in 150ms, out 300ms.
@@ -126,7 +126,7 @@ The hero has a floating project image grid with a mouse-parallax effect. Key det
 - `HERO` — headline, headlineAccent, subheadline, cta, ctaSecondary
 - `WORK_SECTION` + `PROJECTS` — 6 portfolio projects with id/name/tagline/url/image/imageWidth/imageHeight
 - `PROCESS_SECTION` + `PROCESS_STEPS` — 3 process steps; each has `number`, `title`, `description` (card summary), `detail` (modal body — multi-paragraph, uses `\n\n`, rendered with `whitespace-pre-line`)
-- `TESTIMONIALS_SECTION` + `TESTIMONIALS` — 3 testimonial cards (placeholders until Ben fills in real ones)
+- `TESTIMONIALS_SECTION` + `TESTIMONIALS` — 3 real client testimonials (quote, name, role); quotes support `\n\n` paragraph breaks
 - `PRICING_SECTION` + `PRICING_TIERS` — Landing Page (£500) and Full Website (£1,000)
 - `CONTACT_SECTION` — label, heading, subheading, calendlyUrl
 - `FOOTER` — logo, email, note, copyright
@@ -135,7 +135,7 @@ The hero has a floating project image grid with a mouse-parallax effect. Key det
 
 - `'use client'` — required on any component using hooks, browser APIs, or event handlers. All section components currently need it due to Framer Motion `whileInView`.
 - **Framer Motion** — always `whileInView` with `viewport={{ once: true, margin: '-80px' }}`. Stagger with `staggerContainer` + `fadeUp` from `lib/animations.ts`.
-- **Button** — always use `<Button>` from `components/ui/Button.tsx` except for the hero primary CTA which uses `SpotlightButton`.
+- **Button** — always use `<Button>` from `components/ui/Button.tsx`. `SpotlightButton` is reserved for high-emphasis CTAs: the hero primary CTA and the highlighted pricing tier CTA.
 - **Section IDs** — `id="work"`, `id="process"`, `id="pricing"`, `id="contact"`. Nav links use `#work`, `#process`, `#pricing`. CTAs link to `#contact`.
 - **Calendly** — loaded via `<Script strategy="lazyOnload">` in ContactSection. URL in `lib/data.ts`.
 
@@ -167,6 +167,5 @@ Then add the resulting `https://winzer-<dirname>.vercel.app` URL to `lib/data.ts
 
 ## Placeholder Items (Ben to update before launch)
 
-1. `lib/data.ts` → `TESTIMONIALS` — real quotes, names, roles (currently placeholder text)
-2. `lib/data.ts` → `CONTACT_SECTION.calendlyUrl` — verify this is the correct Calendly link
-3. `lib/data.ts` → `FOOTER.email` — verify this is the correct email
+1. `lib/data.ts` → `CONTACT_SECTION.calendlyUrl` — verify this is the correct Calendly link
+2. `lib/data.ts` → `FOOTER.email` — verify this is the correct email

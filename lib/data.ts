@@ -111,21 +111,21 @@ export const TESTIMONIALS_SECTION = {
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: 1,
-    quote: 'Add your real testimonial here.',
-    name: 'Client Name',
-    role: 'Role, Company',
+    quote: "Hey Ben - needed to reach out personally. Your speed and initiative are next level. Had to tweak some copy for Meta's guidelines, but your work ethic is seriously impressive. You're crushing it way beyond your years and I'm genuinely excited to see where we can take this together ⚡️",
+    name: 'Darrell Kawooya',
+    role: 'E-Commerce Store',
   },
   {
     id: 2,
-    quote: 'Add your real testimonial here.',
-    name: 'Client Name',
-    role: 'Role, Company',
+    quote: "The thing I like the most about your service was that you were able to deliever on a short time schedule. I needed multiple last minute edits that were handled not only fast but with the quality of the webiste.\n\nBefore we started working together I was using a carrd website that looked unprofessional and only able to convert people that I had built up a lot of trust with. After working with you I now have a sales page that has already converted but will also continue to a valuable asset in my business.\n\nI would recommend you to anyone who wants to make money online with a professional looking webiste.",
+    name: 'Tyler Van Acker',
+    role: 'Physical Coach',
   },
   {
     id: 3,
-    quote: 'Add your real testimonial here.',
-    name: 'Client Name',
-    role: 'Role, Company',
+    quote: "I liked the speed in which you replied and how fast you completed the project. I was taking forever when I tried it and I was amazed at how little time it took for you to do it.\n\nI would, absolutely recommend you to anyone else. Finding someone that’s easy to work with like you and is very willing and creative to help someone solve their problem is rare. If I know someone who needs your services, I would definitely recommend you.\n\n",
+    name: 'Daniel Wedel',
+    role: 'Copywriter',
   },
 ]
 
