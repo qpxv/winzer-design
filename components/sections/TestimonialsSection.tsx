@@ -15,7 +15,7 @@ function TestimonialColumn({ testimonial }: { testimonial: Testimonial }) {
     >
       <p className="text-text-secondary text-base leading-relaxed flex-1">
         <span className="text-accent">&ldquo;</span>
-        {firstParagraph}&rdquo;
+        {firstParagraph}<span className="text-accent">&rdquo;</span>
       </p>
       <div>
         <p className="font-serif italic text-accent text-sm leading-snug">{testimonial.name}</p>
