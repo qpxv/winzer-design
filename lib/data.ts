@@ -169,7 +169,8 @@ export const PRICING_TIERS: PricingTier[] = [
 
 export const CONTACT_SECTION = {
   label: 'Start a project',
-  heading: 'Your site starts with a conversation.',
+  heading: 'Your site starts with a',
+  headingAccent: 'conversation.',
   subheading: "Book a slot. We'll talk through what you need, what's realistic, and whether it's a good fit. Half an hour, no commitment.",
   cta: 'Book a free call',
   calendlyUrl: 'https://calendly.com/benwinzer/website-call?hide_gdpr_banner=1',
@@ -179,5 +180,4 @@ export const FOOTER = {
   logo: 'Winzer Design',
   email: 'ben@winzerdesign.com',
   note: 'Built by me, obviously.',
-  copyright: '2025 Winzer Design',
 }

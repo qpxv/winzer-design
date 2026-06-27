@@ -85,8 +85,8 @@ components/
     ProcessSection.tsx # 'use client' — 3 clickable cards (serif watermark number, hover glow) in a horizontal flex row; connected by two mirrored curvy SVG lines (first dips down, second arcs up, no arrowhead); click opens inline ProcessStepModal with description + detail field
     TestimonialsSection.tsx  # 'use client' — 3-column grid (no cards), each column: first paragraph of quote only (split on \n\n), serif italic name + muted role below; bg-bg; columns divided by divide-x divide-border on md
     PricingSection.tsx # 'use client' — single unified panel (bg-bg border rounded-2xl), two columns divided by border-r; highlighted tier gets h-0.5 accent stripe at top; price in large font-serif with DollarSign icon; tier name in font-serif italic text-accent; ghost Button on lower tier, SpotlightButton on highlighted tier; all CTAs dispatch 'open-calendly' event
-    ContactSection.tsx # 'use client' — dark bg (bg-text-primary), heading + subheading + SpotlightButton that dispatches 'open-calendly'; no Calendly embed (popup handles booking)
-    FooterSection.tsx  # server — logo, email, tagline
+    ContactSection.tsx # 'use client' — dark bg (bg-text-primary); full-width serif heading (max-w-2xl) with italic text-accent-light accent word on last line; thin border-t border-white/10 divider below heading; flex row: subheading (text-white/50) left, SpotlightButton right; dispatches 'open-calendly'
+    FooterSection.tsx  # server — logo, email, tagline; copyright year derived from new Date().getFullYear() (not hardcoded)
 
 lib/
   data.ts              # ALL copy, projects, testimonials, pricing, process steps
@@ -129,8 +129,8 @@ The hero has a floating project image grid with a mouse-parallax effect. Key det
 - `PROCESS_SECTION` + `PROCESS_STEPS` — 3 process steps; each has `number`, `title`, `description` (card summary), `detail` (modal body — multi-paragraph, uses `\n\n`, rendered with `whitespace-pre-line`)
 - `TESTIMONIALS_SECTION` + `TESTIMONIALS` — 3 real client testimonials (quote, name, role); quotes support `\n\n` paragraph breaks
 - `PRICING_SECTION` + `PRICING_TIERS` — Landing Page ($500) and Full Website ($1,000); currency rendered as `<DollarSign />` icon
-- `CONTACT_SECTION` — label, heading, subheading, cta, calendlyUrl (includes `?hide_gdpr_banner=1`)
-- `FOOTER` — logo, email, note, copyright
+- `CONTACT_SECTION` — label, heading, headingAccent (split like HERO for italic accent word), subheading, cta, calendlyUrl (includes `?hide_gdpr_banner=1`)
+- `FOOTER` — logo, email, note (no copyright field — year is derived at render time)
 
 ## Key Conventions
 

@@ -6,7 +6,7 @@ export default function FooterSection() {
       <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <span className="font-semibold text-text-primary">{FOOTER.logo}</span>
-          <span className="text-text-muted text-sm">&copy; {FOOTER.copyright}</span>
+          <span className="text-text-muted text-sm">&copy; {new Date().getFullYear()} Winzer Design</span>
         </div>
 
         <a
