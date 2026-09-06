@@ -40,3 +40,22 @@ export interface PricingTier {
   features: string[]
   highlighted?: boolean
 }
+
+export type ComparisonIcon =
+  | 'Palette'
+  | 'Code2'
+  | 'Gauge'
+  | 'TrendingUp'
+  | 'PenLine'
+  | 'KeyRound'
+  | 'UserRound'
+  | 'Rocket'
+  | 'Tag'
+  | 'LifeBuoy'
+
+export interface ComparisonRow {
+  icon: ComparisonIcon
+  feature: string
+  them: string
+  themLevel: 'no' | 'partial'
+}

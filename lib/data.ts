@@ -4,6 +4,7 @@ import type {
   Testimonial,
   TestimonialScreenshot,
   PricingTier,
+  ComparisonRow,
 } from '@/types'
 
 export const NAV = {
@@ -208,6 +209,28 @@ export const PRICING_TIERS: PricingTier[] = [
     ],
     highlighted: true,
   },
+]
+
+export const COMPARISON_SECTION = {
+  label: 'Custom vs. template',
+  heading: 'What a builder can\'t give you',
+  subheading:
+    'A template gets you online. A custom site gets you a result. Line by line, here is the difference.',
+  columnUs: 'Winzer Design',
+  columnThem: 'Templates & builders',
+}
+
+export const COMPARISON_ROWS: ComparisonRow[] = [
+  { icon: 'Palette', feature: 'Designed around your brand', them: 'A theme thousands of other sites already run', themLevel: 'no' },
+  { icon: 'Code2', feature: 'Hand-written code, nothing bloated', them: 'Heavy generated markup that loads slowly', themLevel: 'no' },
+  { icon: 'Gauge', feature: 'Tuned for speed and search', them: 'Plugins and scripts pile up over time', themLevel: 'partial' },
+  { icon: 'TrendingUp', feature: 'Laid out to convert, not decorate', them: 'Looks fine, quietly loses enquiries', themLevel: 'no' },
+  { icon: 'PenLine', feature: 'Copy direction handled with you', them: 'Empty text boxes, you fill them', themLevel: 'partial' },
+  { icon: 'KeyRound', feature: 'You own the code and every account', them: 'Rented from one platform, monthly, forever', themLevel: 'no' },
+  { icon: 'UserRound', feature: 'One person, briefed once, start to finish', them: 'Docs, forums and support queues', themLevel: 'partial' },
+  { icon: 'Rocket', feature: 'Live in days', them: 'Weeks of trial and error to get it right', themLevel: 'partial' },
+  { icon: 'Tag', feature: 'Fixed price, agreed before we start', them: 'Subscriptions that never switch off', themLevel: 'no' },
+  { icon: 'LifeBuoy', feature: 'A proper handoff and walkthrough', them: 'A help-centre article', themLevel: 'no' },
 ]
 
 export const CONTACT_SECTION = {
