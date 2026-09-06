@@ -212,25 +212,25 @@ export const PRICING_TIERS: PricingTier[] = [
 ]
 
 export const COMPARISON_SECTION = {
-  label: 'Custom vs. template',
-  heading: 'What a builder can\'t give you',
+  label: 'Direct vs. agency',
+  heading: 'Everything an agency does, minus the overhead',
   subheading:
-    'A template gets you online. A custom site gets you a result. Line by line, here is the difference.',
+    'An agency can build you a good site too. Line by line, here is what working with me directly gets you that they can\'t.',
   columnUs: 'Winzer Design',
-  columnThem: 'Templates & builders',
+  columnThem: 'Agencies',
 }
 
 export const COMPARISON_ROWS: ComparisonRow[] = [
-  { icon: 'Palette', feature: 'Designed around your brand', them: 'A theme thousands of other sites already run', themLevel: 'no' },
-  { icon: 'Code2', feature: 'Hand-written code, nothing bloated', them: 'Heavy generated markup that loads slowly', themLevel: 'no' },
-  { icon: 'Gauge', feature: 'Tuned for speed and search', them: 'Plugins and scripts pile up over time', themLevel: 'partial' },
-  { icon: 'TrendingUp', feature: 'Laid out to convert, not decorate', them: 'Looks fine, quietly loses enquiries', themLevel: 'no' },
-  { icon: 'PenLine', feature: 'Copy direction handled with you', them: 'Empty text boxes, you fill them', themLevel: 'partial' },
-  { icon: 'KeyRound', feature: 'You own the code and every account', them: 'Rented from one platform, monthly, forever', themLevel: 'no' },
-  { icon: 'UserRound', feature: 'One person, briefed once, start to finish', them: 'Docs, forums and support queues', themLevel: 'partial' },
-  { icon: 'Rocket', feature: 'Live in days', them: 'Weeks of trial and error to get it right', themLevel: 'partial' },
-  { icon: 'Tag', feature: 'Fixed price, agreed before we start', them: 'Subscriptions that never switch off', themLevel: 'no' },
-  { icon: 'LifeBuoy', feature: 'A proper handoff and walkthrough', them: 'A help-centre article', themLevel: 'no' },
+  { icon: 'Palette', feature: 'Designed around your brand', them: 'A strong look, shaped by the agency\'s portfolio' },
+  { icon: 'Code2', feature: 'Hand-coded, nothing bloated', them: 'Often a heavy CMS build you do not control' },
+  { icon: 'Gauge', feature: 'Tuned for speed and search', them: 'Bolted on after sign-off, if the budget is left' },
+  { icon: 'TrendingUp', feature: 'Laid out to convert, not decorate', them: 'Beautiful decks, results left to you' },
+  { icon: 'PenLine', feature: 'Copy direction handled with you', them: 'Quoted as a separate workstream' },
+  { icon: 'Server', feature: 'Hosting and domain set up and managed for you', them: 'A hosting retainer on top, or handed back to you' },
+  { icon: 'UserRound', feature: 'One person who knows your site, on call', them: 'Sold by a lead, built by whoever is free' },
+  { icon: 'Rocket', feature: 'A draft in days, live shortly after', them: 'A discovery phase, then weeks of rounds' },
+  { icon: 'Tag', feature: 'One build price, then a flat monthly that covers everything', them: 'A big upfront quote, then billable hours' },
+  { icon: 'Wrench', feature: 'Small changes and fixes handled whenever you need them', them: 'Every change is a new statement of work' },
 ]
 
 export const CONTACT_SECTION = {

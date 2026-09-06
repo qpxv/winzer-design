@@ -47,15 +47,14 @@ export type ComparisonIcon =
   | 'Gauge'
   | 'TrendingUp'
   | 'PenLine'
-  | 'KeyRound'
+  | 'Server'
   | 'UserRound'
   | 'Rocket'
   | 'Tag'
-  | 'LifeBuoy'
+  | 'Wrench'
 
 export interface ComparisonRow {
   icon: ComparisonIcon
   feature: string
   them: string
-  themLevel: 'no' | 'partial'
 }

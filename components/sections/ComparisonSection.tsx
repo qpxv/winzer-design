@@ -5,23 +5,22 @@ import { motion } from 'framer-motion'
 import {
   Check,
   X,
-  Minus,
   Palette,
   Code2,
   Gauge,
   TrendingUp,
   PenLine,
-  KeyRound,
+  Server,
   UserRound,
   Rocket,
   Tag,
-  LifeBuoy,
+  Wrench,
   type LucideIcon,
 } from 'lucide-react'
 import { fadeUp } from '@/lib/animations'
 import { COMPARISON_SECTION, COMPARISON_ROWS } from '@/lib/data'
 import { cn } from '@/lib/utils'
-import type { ComparisonIcon, ComparisonRow } from '@/types'
+import type { ComparisonIcon } from '@/types'
 
 const ICON_MAP: Record<ComparisonIcon, LucideIcon> = {
   Palette,
@@ -29,11 +28,11 @@ const ICON_MAP: Record<ComparisonIcon, LucideIcon> = {
   Gauge,
   TrendingUp,
   PenLine,
-  KeyRound,
+  Server,
   UserRound,
   Rocket,
   Tag,
-  LifeBuoy,
+  Wrench,
 }
 
 const GRID_COLS = 'grid-cols-[1fr_210px_1fr] gap-x-8'
@@ -46,9 +45,8 @@ function UsCheck() {
   )
 }
 
-function ThemMark({ level }: { level: ComparisonRow['themLevel'] }) {
-  const Mark = level === 'no' ? X : Minus
-  return <Mark className="size-4 shrink-0 text-text-muted" />
+function ThemMark() {
+  return <X className="size-4 shrink-0 text-text-muted" />
 }
 
 export default function ComparisonSection() {
@@ -110,7 +108,7 @@ export default function ComparisonSection() {
 
                 <div className="flex items-center justify-between gap-3 border-b border-border py-4">
                   <span className="text-sm text-text-secondary">{row.them}</span>
-                  <ThemMark level={row.themLevel} />
+                  <ThemMark />
                 </div>
               </Fragment>
             )
@@ -141,7 +139,7 @@ export default function ComparisonSection() {
                   <span className="text-sm">{COMPARISON_SECTION.columnUs}</span>
                 </div>
                 <div className="flex items-start gap-2 border-t border-border px-4 py-3">
-                  <ThemMark level={row.themLevel} />
+                  <ThemMark />
                   <span className="text-sm text-text-secondary">{row.them}</span>
                 </div>
               </div>
