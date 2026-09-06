@@ -312,3 +312,128 @@ const nextConfig: NextConfig = {
   devIndicators: false,
 };
 ```
+
+---
+
+## 22. Navbar Layout — `grid-cols-[auto_1fr_auto]`, Never `justify-between` or Equal `grid-cols-3`, for a Centered Middle Nav
+
+Never build a navbar with `flex justify-between` across three children (logo, nav links, CTA/hamburger). That only centers the middle nav links when the logo and the right-side content happen to be the same width — in practice they rarely are, so the links visibly drift toward whichever side is narrower.
+
+Equal `grid-cols-3` (three `1fr` tracks) is also not safe as a default — it only works when the logo and CTA text are both short. If the logo/site name is long (e.g. "Primary Tutoring Wisconsin"), an equal third is too narrow for it, and the middle nav column gets squeezed even smaller, causing link labels to wrap and the whole thing to look off-center again.
+
+Always use `grid-cols-[auto_1fr_auto]`: logo column sized to its own content, nav column takes the true remaining space with `justify-center`, CTA/hamburger column sized to its own content with `justify-end`. This centers the nav links in the actual leftover space regardless of how wide the logo or CTA area is, and never causes wrapping.
+
+**Bad (asymmetric side content breaks centering):**
+
+```tsx
+<div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+  <Logo />
+  <nav className="hidden md:flex gap-8">{links}</nav>
+  <Button />
+</div>
+```
+
+**Also bad (equal thirds break when logo/CTA text is long):**
+
+```tsx
+<div className="mx-auto grid max-w-6xl grid-cols-3 items-center px-6 py-4">
+  <Logo />
+  <nav className="hidden items-center justify-center gap-8 md:flex">
+    {links}
+  </nav>
+  <Button />
+</div>
+```
+
+**Good:**
+
+```tsx
+<div className="mx-auto grid max-w-6xl grid-cols-[auto_1fr] items-center gap-4 px-6 py-4 md:grid-cols-[auto_1fr_auto]">
+  <Logo />
+  <nav className="hidden items-center justify-center gap-8 md:flex">
+    {links}
+  </nav>
+  <div className="flex items-center justify-end gap-4">
+    <Button />
+    <MobileMenuToggle />
+  </div>
+</div>
+```
+
+Note the mobile fallback: on small screens `nav` is `hidden` so it doesn't participate in grid layout, leaving a simple 2-column `[auto_1fr]` (logo + hamburger). At `md:` it becomes 3 columns.
+
+## 23. Faces Always Come From randomuser.me
+
+Any time a design needs a human face (testimonial authors, tutor/team/staff cards, "trusted by" avatars, hero mockups, avatar stacks), use **randomuser.me** portraits. Never use DiceBear, cartoon/illustrated avatar generators, initials placeholders, `pravatar.cc`, `generated.photos`, or `thispersondoesnotexist.com`.
+
+- URL shape: `https://randomuser.me/api/portraits/{men|women}/{0-99}.jpg` (thumbnails: `.../portraits/thumb/...`).
+- Pick a fixed integer per person so the face is **stable** across reloads. Store the URL in `lib/data.ts` alongside the rest of that person's data, built via a small `buildAvatarUrl(gender, index)` helper.
+- Match the `men` / `women` path to the person's name so the photo isn't jarring.
+- Render with a plain `<img>` (these are external, non-optimizable), add `loading="lazy"`, and give real `alt` text like `Portrait of {name}`.
+- These are real donated stock photos, not synthetic faces. Add a one-line comment noting the placeholder and that it should be swapped for a real photo when available.
+
+---
+
+## 24. Git — This Repo Is Standalone
+
+`winzer.design` is its own git repository (remote: `github.com/qpxv/winzer-design`, private), not part of the `website-collection` monorepo. Ignore the collection-wide "commit from the `websites/` monorepo" rule here.
+
+- Commit and push directly from this repo's root (`~/Projects/winzer.design/`).
+- Committing straight to `main` is fine (personal project, no PR workflow).
+- Only commit or push when explicitly asked.
+- Conventional commit prefixes, imperative mood, one logical change per commit. No need for a `feat(winzer):` scope since the whole repo is this one site.
+
+---
+
+## 25. Home Page Hero Is Always Full Viewport Height
+
+The hero section on the home/landing page (the very first section, whether it's a single-page site or the `/` route of a multi-page site) must always fill the full viewport height, at any window size, not just size to its own padding/content.
+
+```tsx
+<section className="relative flex min-h-screen items-center overflow-hidden ...">
+  <div className="mx-auto w-full max-w-6xl ...">
+    {/* hero content */}
+  </div>
+</section>
+```
+
+- `min-h-screen` on the hero `<section>`, `flex items-center` to vertically center the content within it instead of relying on top/bottom padding to reach full height.
+- Add `w-full` to the inner content wrapper so it doesn't shrink to content width once the parent is a flex container.
+- This rule is for the home/landing page hero only. Secondary page heroes (About, Contact, Services, etc.) are not required to be full viewport height.
+
+---
+
+## 26. One-Knob Theming — Single Source of Truth, Derive Don't Repeat
+
+The accent color is a **single source of truth**: one `--color-accent` line in `globals.css @theme {}`. Every other themeable value derives from it, so re-skinning a whole site (purple to blue, to near-black, etc.) is a one-line change. Extends rule 7.
+
+- **Accent shades** (`--color-accent-hover`, `-light`, `-muted`, `--color-btn-primary`) are `color-mix(in oklab, var(--color-accent), black|white <n>%)` — never independent hex values that silently drift when the accent changes.
+- **Neutral ground** (`--color-bg`, `--color-surface`, `--color-border`) is a faint tint of the accent: `color-mix(in oklab, var(--color-accent) <n>%, white)`. Keeps the palette cohesive across accent swaps.
+- **Accent-tinted shadows** are theme tokens too: `--shadow-accent-sm` / `-md` / `-lg` in `@theme` generate `shadow-accent-*` utilities. Never write `shadow-[0_32px_90px_-32px_rgba(124,58,237,0.4)]` in a class string.
+- **Accent-tinted gradients / grid overlays / glows** in `style` props or JS string constants must reference `var(--color-accent)` via `color-mix(in srgb, var(--color-accent) <n>%, transparent)` — never a hardcoded `rgba()` of the accent.
+- Text colors stay neutral (near-black / grey), not derived.
+- Before finishing any theming work, grep the codebase: the accent hex and `rgba(<accent-rgb>` must appear **nowhere** except the one `--color-accent` line.
+
+**Bad:**
+
+```css
+--color-accent: #7c3aed;
+--color-accent-hover: #6d28d9;   /* independent value — drifts on re-skin */
+```
+
+```tsx
+<div className="shadow-[0_32px_90px_-32px_rgba(124,58,237,0.4)]" />
+```
+
+**Good:**
+
+```css
+--color-accent: #7c3aed;                                    /* the only knob */
+--color-accent-hover: color-mix(in oklab, var(--color-accent), black 14%);
+--color-surface:      color-mix(in oklab, var(--color-accent) 6%, white);
+--shadow-accent-lg:   0 32px 90px -32px color-mix(in srgb, var(--color-accent) 40%, transparent);
+```
+
+```tsx
+<div className="shadow-accent-lg" />
+```
