@@ -14,7 +14,7 @@ export const NAV = {
 
 export const HERO = {
   headline: 'Websites that',
-  headlineAccent: 'get results.',
+  headlineAccent: 'get results',
   subheadline: 'Custom-designed, custom-coded sites built to convert. Not templates, not page builders, not shortcuts. Live in days, not months.',
   cta: 'Book a free call',
   ctaSecondary: 'See the work',
@@ -22,7 +22,7 @@ export const HERO = {
 
 export const WORK_SECTION = {
   label: 'The work',
-  heading: 'Built from scratch. Every time.',
+  heading: 'Built from scratch, every time',
   subheading: 'No templates, no drag-and-drop builders. Just clean code and design that actually looks like your brand, not someone else\'s theme.',
 }
 
@@ -104,7 +104,7 @@ export const PROJECTS: Project[] = [
 
 export const PROCESS_SECTION = {
   label: 'How it works',
-  heading: 'Three steps. No surprises.',
+  heading: 'Three steps, no surprises',
   subheading:
     'From first call to live site, you always know what happens next, what it costs, and where things stand.',
 }
@@ -129,7 +129,7 @@ export const PROCESS_STEPS: ProcessStep[] = [
 
 export const TESTIMONIALS_SECTION = {
   label: 'Testimonials',
-  heading: 'Clients say it best.',
+  heading: 'Clients say it best',
   subheading:
     'Real messages, unedited, from people I\'ve built for.',
 }
@@ -173,7 +173,7 @@ export const TESTIMONIALS: Testimonial[] = [
 
 export const PRICING_SECTION = {
   label: 'Pricing',
-  heading: 'Fixed pricing. No hourly rates.',
+  heading: 'Fixed pricing, no hourly rates',
   subheading: "Know the cost before anything starts. No scope creep, no awkward conversations at the end.",
   note: "Not sure which fits? We can work that out on a call.",
   cta: 'Book a call',
@@ -213,7 +213,7 @@ export const PRICING_TIERS: PricingTier[] = [
 export const CONTACT_SECTION = {
   label: 'Start a project',
   heading: 'Your site starts with a',
-  headingAccent: 'conversation.',
+  headingAccent: 'conversation',
   subheading: "Book a slot. We'll talk through what you need, what's realistic, and whether it's a fit. Thirty minutes, no pressure.",
   cta: 'Book a free call',
   calendlyUrl: 'https://calendly.com/benwinzer/website-call?hide_gdpr_banner=1',
