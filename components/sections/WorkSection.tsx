@@ -3,51 +3,109 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { staggerContainer, fadeUp } from '@/lib/animations'
+import { ArrowUpRight } from 'lucide-react'
+import { fadeUp } from '@/lib/animations'
 import { WORK_SECTION, PROJECTS } from '@/lib/data'
 import ProjectModal from '@/components/ui/ProjectModal'
+import { cn } from '@/lib/utils'
 import type { Project } from '@/types'
 
-function ProjectCard({
+function hostOf(url: string): string {
+  try {
+    return new URL(url).hostname.replace(/^www\./, '')
+  } catch {
+    return url
+  }
+}
+
+function ShowcaseRow({
   project,
+  index,
   onOpen,
 }: {
   project: Project
-  onOpen: (p: Project) => void
+  index: number
+  onOpen: () => void
 }) {
+  const flipped = index % 2 === 1
+
   return (
     <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-120px' }}
       variants={fadeUp}
-      className="group relative rounded-2xl overflow-hidden cursor-pointer bg-surface"
-      onClick={() => onOpen(project)}
+      className={cn(
+        'flex flex-col gap-8 md:flex-row md:items-center md:gap-14',
+        flipped && 'md:flex-row-reverse',
+      )}
     >
-      <Image
-        src={project.image}
-        alt={project.name}
-        width={project.imageWidth}
-        height={project.imageHeight}
-        className="w-full h-auto block"
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-      />
+      <button
+        type="button"
+        onClick={onOpen}
+        aria-label={`Preview ${project.name}`}
+        className="group w-full md:w-[58%] cursor-pointer"
+      >
+        <div className="overflow-hidden rounded-2xl border border-border bg-surface shadow-accent-lg transition-transform duration-300 group-hover:-translate-y-1">
+          <div className="flex items-center gap-2 border-b border-border px-4 h-10">
+            <span className="size-2.5 rounded-full bg-border" />
+            <span className="size-2.5 rounded-full bg-border" />
+            <span className="size-2.5 rounded-full bg-border" />
+            <span className="ml-3 truncate text-xs text-text-muted">{hostOf(project.url)}</span>
+          </div>
+          <Image
+            src={project.image}
+            alt={project.name}
+            width={project.imageWidth}
+            height={project.imageHeight}
+            sizes="(max-width: 768px) 100vw, 60vw"
+            className="w-full h-auto block"
+          />
+        </div>
+      </button>
 
-      <div className="absolute inset-0 bg-text-primary/80 flex flex-col justify-end p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <p className="text-white font-semibold text-lg">{project.name}</p>
-        <p className="text-white/70 text-sm mt-1">{project.tagline}</p>
+      <div className="relative md:w-[42%]">
+        <span
+          aria-hidden
+          className="absolute -top-10 left-0 select-none pointer-events-none font-serif text-6xl md:text-7xl text-accent/10"
+        >
+          {String(index + 1).padStart(2, '0')}
+        </span>
+        <h3 className="relative font-serif text-3xl md:text-4xl tracking-tight text-text-primary">
+          {project.name}
+        </h3>
+        <p className="mt-3 text-base text-text-secondary max-w-sm">{project.tagline}</p>
+        <div className="mt-6 flex items-center gap-6">
+          <button
+            type="button"
+            onClick={onOpen}
+            className="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors duration-200 cursor-pointer"
+          >
+            Open preview
+          </button>
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1 text-sm font-medium text-accent hover:text-accent-hover transition-colors duration-200"
+          >
+            View live site
+            <ArrowUpRight size={14} />
+          </a>
+        </div>
       </div>
-
-      <div className="absolute inset-0 scale-100 group-hover:scale-[1.02] transition-transform duration-300" />
     </motion.div>
   )
 }
 
 export default function WorkSection() {
-  const [activeProject, setActiveProject] = useState<Project | null>(null)
+  const [modalProject, setModalProject] = useState<Project | null>(null)
 
   return (
     <section id="work" className="py-24 md:py-32 bg-bg">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
-          className="mb-16"
+          className="mb-16 md:mb-24"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
@@ -60,34 +118,19 @@ export default function WorkSection() {
           <p className="text-text-secondary text-base max-w-xl">{WORK_SECTION.subheading}</p>
         </motion.div>
 
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-80px' }}
-          variants={staggerContainer}
-        >
-          {PROJECTS.reduce<Project[][]>(
-            (cols, project, i) => {
-              cols[i % 3].push(project)
-              return cols
-            },
-            [[], [], []],
-          ).map((col, ci) => (
-            <motion.div
-              key={ci}
-              variants={fadeUp}
-              className="flex flex-col gap-[10px]"
-            >
-              {col.map((project) => project && (
-                <ProjectCard key={project.id} project={project} onOpen={setActiveProject} />
-              ))}
-            </motion.div>
+        <div className="flex flex-col gap-24 md:gap-32">
+          {PROJECTS.map((project, i) => (
+            <ShowcaseRow
+              key={project.id}
+              project={project}
+              index={i}
+              onOpen={() => setModalProject(project)}
+            />
           ))}
-        </motion.div>
+        </div>
       </div>
 
-      <ProjectModal project={activeProject} onClose={() => setActiveProject(null)} />
+      <ProjectModal project={modalProject} onClose={() => setModalProject(null)} />
     </section>
   )
 }
