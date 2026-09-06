@@ -3,6 +3,7 @@ export interface Project {
   name: string
   tagline: string
   url: string
+  domain: string
   image: string
   imageWidth: number
   imageHeight: number

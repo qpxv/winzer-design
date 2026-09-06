@@ -1,22 +1,15 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+import { flushSync } from 'react-dom'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, ArrowDown } from 'lucide-react'
 import { fadeUp } from '@/lib/animations'
 import { WORK_SECTION, PROJECTS } from '@/lib/data'
 import ProjectModal from '@/components/ui/ProjectModal'
 import { cn } from '@/lib/utils'
 import type { Project } from '@/types'
-
-function hostOf(url: string): string {
-  try {
-    return new URL(url).hostname.replace(/^www\./, '')
-  } catch {
-    return url
-  }
-}
 
 function ShowcaseRow({
   project,
@@ -51,7 +44,7 @@ function ShowcaseRow({
             <span className="size-2.5 rounded-full bg-border" />
             <span className="size-2.5 rounded-full bg-border" />
             <span className="size-2.5 rounded-full bg-border" />
-            <span className="ml-3 truncate text-xs text-text-muted">{hostOf(project.url)}</span>
+            <span className="ml-3 truncate text-xs text-text-muted">{project.domain}</span>
           </div>
           <Image
             src={project.image}
@@ -98,8 +91,26 @@ function ShowcaseRow({
   )
 }
 
+// Full showcase bands shown before "View more"; the next one peeks under a fade.
+const COLLAPSED_COUNT = 2
+
 export default function WorkSection() {
   const [modalProject, setModalProject] = useState<Project | null>(null)
+  const [expanded, setExpanded] = useState(false)
+  const collapseScrollY = useRef(0)
+
+  const handleToggle = (): void => {
+    if (expanded) {
+      // Commit the shorter layout first, then return to where "View more" was clicked.
+      flushSync(() => setExpanded(false))
+      window.scrollTo({ top: collapseScrollY.current, behavior: 'auto' })
+    } else {
+      collapseScrollY.current = window.scrollY
+      setExpanded(true)
+    }
+  }
+
+  const visibleProjects = expanded ? PROJECTS : PROJECTS.slice(0, COLLAPSED_COUNT + 1)
 
   return (
     <section id="work" className="py-24 md:py-32 bg-bg">
@@ -119,14 +130,44 @@ export default function WorkSection() {
         </motion.div>
 
         <div className="flex flex-col gap-24 md:gap-32">
-          {PROJECTS.map((project, i) => (
-            <ShowcaseRow
-              key={project.id}
-              project={project}
-              index={i}
-              onOpen={() => setModalProject(project)}
+          {visibleProjects.map((project, i) => {
+            const row = (
+              <ShowcaseRow
+                key={project.id}
+                project={project}
+                index={i}
+                onOpen={() => setModalProject(project)}
+              />
+            )
+
+            if (!expanded && i === COLLAPSED_COUNT) {
+              return (
+                <div
+                  key={project.id}
+                  inert
+                  className="relative max-h-72 overflow-hidden [mask-image:linear-gradient(to_bottom,#000_35%,transparent)] [-webkit-mask-image:linear-gradient(to_bottom,#000_35%,transparent)]"
+                >
+                  {row}
+                </div>
+              )
+            }
+
+            return row
+          })}
+        </div>
+
+        <div className="mt-16 flex justify-center">
+          <button
+            type="button"
+            onClick={handleToggle}
+            className="flex items-center gap-2 text-sm font-medium text-text-secondary hover:text-text-primary transition-colors duration-200 cursor-pointer"
+          >
+            {expanded ? 'View less' : 'View more'}
+            <ArrowDown
+              size={16}
+              className={cn('transition-transform duration-300', expanded && 'rotate-180')}
             />
-          ))}
+          </button>
         </div>
       </div>
 

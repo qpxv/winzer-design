@@ -26,21 +26,46 @@ export const WORK_SECTION = {
   subheading: 'The design comes from your brand. The code is clean. The result is something that actually reflects what you do.',
 }
 
+// `url` is the live deployment used for the in-app preview iframe. `domain` is the
+// display-only host shown in the browser-chrome pill (what the site's real domain
+// would look like).
 export const PROJECTS: Project[] = [
   {
     id: 'volta',
     name: 'VOLTA',
     tagline: 'SaaS design studio platform',
     url: 'https://winzer-volta.vercel.app',
+    domain: 'volta.design',
     image: '/projects/volta-work.png',
     imageWidth: 1797,
     imageHeight: 946,
   },
   {
+    id: 'synmedia',
+    name: 'SynMedia',
+    tagline: 'Done-for-you YouTube growth agency',
+    url: 'https://synmedia-preview.vercel.app',
+    domain: 'synmedia.agency',
+    image: '/projects/synmedia-work.png',
+    imageWidth: 1800,
+    imageHeight: 780,
+  },
+  {
+    id: 'jot',
+    name: 'Jot',
+    tagline: 'iOS app landing page',
+    url: 'https://winzer-jot.vercel.app',
+    domain: 'getjot.app',
+    image: '/projects/jot-work.png',
+    imageWidth: 1759,
+    imageHeight: 1035,
+  },
+  {
     id: 'anil-seth',
     name: 'Anil Seth',
-    tagline: 'Neuroscientist & author personal brand',
+    tagline: 'Neuroscientist and author personal brand',
     url: 'https://winzer-tedx.vercel.app',
+    domain: 'anilseth.com',
     image: '/projects/anil-seth-work.png',
     imageWidth: 1837,
     imageHeight: 881,
@@ -48,8 +73,9 @@ export const PROJECTS: Project[] = [
   {
     id: 'snipvault',
     name: 'SnipVault',
-    tagline: 'Developer tool — code snippet manager',
+    tagline: 'Code snippet manager for developers',
     url: 'https://winzer-snip-vault.vercel.app',
+    domain: 'snipvault.dev',
     image: '/projects/snipvault-work.png',
     imageWidth: 1848,
     imageHeight: 1008,
@@ -57,38 +83,22 @@ export const PROJECTS: Project[] = [
   {
     id: 'kai-nakamura',
     name: 'Kai Nakamura',
-    tagline: 'Photographer & filmmaker portfolio',
+    tagline: 'Photographer and filmmaker portfolio',
     url: 'https://winzer-photography.vercel.app',
+    domain: 'kainakamura.com',
     image: '/projects/kai-nakamura-work.png',
     imageWidth: 1802,
     imageHeight: 1054,
-  },
-  {
-    id: 'jot',
-    name: 'Jot',
-    tagline: 'iOS app landing page',
-    url: 'https://winzer-jot.vercel.app',
-    image: '/projects/jot-work.png',
-    imageWidth: 1759,
-    imageHeight: 1035,
   },
   {
     id: 'ironside',
     name: 'IRONSIDE',
     tagline: 'Performance coaching programme',
     url: 'https://winzer-ironside.vercel.app',
+    domain: 'ironside.coach',
     image: '/projects/ironside-work.png',
     imageWidth: 1818,
     imageHeight: 884,
-  },
-  {
-    id: 'synmedia',
-    name: 'SynMedia',
-    tagline: 'Done-for-you YouTube growth agency',
-    url: 'https://synmedia-preview.vercel.app',
-    image: '/projects/synmedia-work.png',
-    imageWidth: 1800,
-    imageHeight: 780,
   },
 ]
 
