@@ -12,7 +12,6 @@ export interface ProcessStep {
   number: string
   title: string
   description: string
-  detail: string
 }
 
 export interface Testimonial {
