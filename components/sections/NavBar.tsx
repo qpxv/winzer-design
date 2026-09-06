@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 import Button from '@/components/ui/Button'
+import { cn } from '@/lib/utils'
 import { NAV } from '@/lib/data'
 
 export default function NavBar() {
@@ -20,11 +21,14 @@ export default function NavBar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+      className={cn(
+        // Border is always present so only its colour transitions, never its
+        // width (a width/currentColor animation flashed a dark line on scroll).
+        'fixed top-0 left-0 right-0 z-40 border-b transition-colors duration-300',
         scrolled
-          ? 'bg-white/80 backdrop-blur-md border-b border-border'
-          : 'bg-transparent'
-      }`}
+          ? 'bg-white/80 backdrop-blur-md border-border'
+          : 'bg-transparent border-transparent',
+      )}
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="#" className="font-semibold text-text-primary tracking-tight">
