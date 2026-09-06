@@ -20,13 +20,13 @@ interface CubeConfig {
 }
 
 const CUBE_CONFIGS: CubeConfig[] = [
-  { project: PROJECTS[0], depth: 0.8, top: '20%', left: '2%',  width: 'w-56' },
-  { project: PROJECTS[1], depth: 0.5, top: '15%', left: '72%', width: 'w-52' },
-  { project: PROJECTS[2], depth: 1.2, top: '62%', left: '5%',  width: 'w-44' },
+  { project: PROJECTS[0], depth: 0.8, top: '20%', left: '8%',  width: 'w-56' },
+  { project: PROJECTS[1], depth: 0.5, top: '16%', left: '72%', width: 'w-52' },
+  { project: PROJECTS[2], depth: 1.2, top: '62%', left: '10%', width: 'w-44' },
   { project: PROJECTS[3], depth: 0.6, top: '70%', left: '68%', width: 'w-60' },
   { project: PROJECTS[4], depth: 1.0, top: '38%', left: '78%', width: 'w-48' },
   { project: PROJECTS[5], depth: 0.4, top: '82%', left: '35%', width: 'w-40' },
-  { project: PROJECTS[6], depth: 0.9, top: '6%',  left: '44%', width: 'w-44' },
+  { project: PROJECTS[6], depth: 0.9, top: '13%', left: '44%', width: 'w-44' },
 ]
 
 function CubeImage({ src, name, width, height }: { src: string; name: string; width: number; height: number }) {
