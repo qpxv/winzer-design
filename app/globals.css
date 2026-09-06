@@ -23,6 +23,32 @@
   /* Fonts */
   --font-sans: var(--font-dm-sans);
   --font-serif: var(--font-dm-serif);
+
+  /* Testimonial wall marquee. Keyframes must live inside @theme so Tailwind v4
+     emits them alongside the generated animate-* utilities. Tracks render their
+     content twice; -50% lands the second copy where the first started, so the
+     loop is seamless. */
+  --animate-marquee-up: marquee-up 55s linear infinite;
+  --animate-marquee-down: marquee-down 55s linear infinite;
+
+  @keyframes marquee-up {
+    to {
+      transform: translateY(-50%);
+    }
+  }
+
+  @keyframes marquee-down {
+    from {
+      transform: translateY(-50%);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-up,
+  .animate-marquee-down {
+    animation: none;
+  }
 }
 
 html {

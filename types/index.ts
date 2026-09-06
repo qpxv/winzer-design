@@ -22,6 +22,16 @@ export interface Testimonial {
   role: string
 }
 
+export interface TestimonialScreenshot {
+  id: number
+  // null while it's a placeholder; set to a path in /public once the real
+  // Telegram screenshot is dropped in
+  src: string | null
+  alt: string
+  width: number
+  height: number
+}
+
 export interface PricingTier {
   id: string
   name: string

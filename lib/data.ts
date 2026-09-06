@@ -1,4 +1,10 @@
-import type { Project, ProcessStep, Testimonial, PricingTier } from '@/types'
+import type {
+  Project,
+  ProcessStep,
+  Testimonial,
+  TestimonialScreenshot,
+  PricingTier,
+} from '@/types'
 
 export const NAV = {
   logo: 'Winzer Design',
@@ -115,7 +121,25 @@ export const PROCESS_STEPS: ProcessStep[] = [
 export const TESTIMONIALS_SECTION = {
   label: 'Kind words',
   heading: 'What clients say.',
+  subheading:
+    'Straight from the chat. Unedited messages from people I’ve built for.',
 }
+
+// Real chat screenshots for the scrolling testimonial wall. Deliberately not in
+// filename order so the three marquee columns read as a varied mix.
+export const TESTIMONIAL_SCREENSHOTS: TestimonialScreenshot[] = [
+  { id: 7, src: '/testimonials/ss7.png', alt: "Client message: \"bro thats awesome man, you're a professional\"", width: 390, height: 215 },
+  { id: 2, src: '/testimonials/ss2.png', alt: 'Client message from Tyler Van Acker about delivery speed and last-minute edits', width: 526, height: 224 },
+  { id: 11, src: '/testimonials/ss11.png', alt: 'Client message: "DUDE YOU ARE SO GOOD AT WEBSITES"', width: 343, height: 96 },
+  { id: 4, src: '/testimonials/ss4.png', alt: 'Client message: "you\'ve been a star player man, I couldn\'t have asked for anything more"', width: 299, height: 255 },
+  { id: 9, src: '/testimonials/ss9.png', alt: 'Client message from Daniel W. about reply speed and turnaround', width: 519, height: 131 },
+  { id: 1, src: '/testimonials/ss1.png', alt: 'Client message from Darrell Kawooya about speed and work ethic', width: 478, height: 138 },
+  { id: 6, src: '/testimonials/ss6.png', alt: 'Client message from Ben Winzer thread: "This is sensational work!"', width: 239, height: 147 },
+  { id: 10, src: '/testimonials/ss10.png', alt: 'Client message: "WOWOWWOW, It looks so professional! It\'s like an Apple Website"', width: 341, height: 202 },
+  { id: 3, src: '/testimonials/ss3.png', alt: 'Client message: "this website is beautiful on mobile"', width: 271, height: 192 },
+  { id: 8, src: '/testimonials/ss8.png', alt: 'Client message: "damn looks clean man"', width: 347, height: 216 },
+  { id: 5, src: '/testimonials/ss5.png', alt: 'Client message: "this is fucking nice, im calling you maestro from now"', width: 294, height: 295 },
+]
 
 export const TESTIMONIALS: Testimonial[] = [
   {
@@ -144,6 +168,7 @@ export const PRICING_SECTION = {
   subheading: "You'll know the cost before anything starts. No scope creep, no awkward conversations at the end.",
   note: "Not sure which fits? We can work that out on a call.",
   cta: 'Book a call',
+  recommendedLabel: 'Recommended',
 }
 
 export const PRICING_TIERS: PricingTier[] = [
