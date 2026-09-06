@@ -101,7 +101,7 @@ types/
 
 The hero has a floating project image grid with a mouse-parallax effect. Key details:
 
-- **Images**: 6 project screenshots in `public/projects/` named `*-work.png` (hero uses the same images as the work grid). Rendered via `next/image` with per-image `width={project.imageWidth}` and `height={project.imageHeight}` from `lib/data.ts`, `className="w-full h-auto"`, and `priority` (above the fold). Exact pixel dimensions stored on the `Project` interface — do not hardcode dimensions.
+- **Images**: 7 project screenshots in `public/projects/` named `*-work.png` (hero uses the same images as the work grid). Rendered via `next/image` with per-image `width={project.imageWidth}` and `height={project.imageHeight}` from `lib/data.ts`, `className="w-full h-auto"`, and `priority` (above the fold). Exact pixel dimensions stored on the `Project` interface — do not hardcode dimensions.
 - **Parallax**: `useMotionValue` + `useSpring` (stiffness: 60, damping: 20) track the mouse position. Each image is a `CubeCard` component that calls `useTransform` to scale the spring by `v * cfg.depth * 8` (multiplier is 8 — intentionally subtle). Deeper images move more. **Do NOT use CSS transitions or `onMouseMove` + CSS custom properties for this** — it causes a snap on cursor stop.
 - **CubeCard**: must be its own component (not inline in `.map()`) so `useTransform` is a valid hook call.
 - **No float animation** — the old `animate={{ y: [0, -12, 0] }}` loop has been removed.
@@ -125,7 +125,7 @@ The hero has a floating project image grid with a mouse-parallax effect. Key det
 
 - `NAV` — logo text, link labels, CTA label
 - `HERO` — headline, headlineAccent, subheadline, cta, ctaSecondary
-- `WORK_SECTION` + `PROJECTS` — 6 portfolio projects with id/name/tagline/url/image/imageWidth/imageHeight
+- `WORK_SECTION` + `PROJECTS` — 7 portfolio projects with id/name/tagline/url/image/imageWidth/imageHeight. `WorkSection` chunks them into 3 columns via `i % 3` (not a hardcoded pairing), and `HeroSection.CUBE_CONFIGS` has one entry per project.
 - `PROCESS_SECTION` + `PROCESS_STEPS` — 3 process steps; each has `number`, `title`, `description` (card summary), `detail` (modal body — multi-paragraph, uses `\n\n`, rendered with `whitespace-pre-line`)
 - `TESTIMONIALS_SECTION` + `TESTIMONIALS` — 3 real client testimonials (quote, name, role); quotes support `\n\n` paragraph breaks
 - `PRICING_SECTION` + `PRICING_TIERS` — Landing Page ($500) and Full Website ($1,000); currency rendered as `<DollarSign />` icon
@@ -144,7 +144,7 @@ The hero has a floating project image grid with a mouse-parallax effect. Key det
 
 ## Deployed Portfolio Sites (Vercel)
 
-Each portfolio project in `lib/data.ts` links to a live Vercel deployment. The naming convention is `winzer-<dirname>.vercel.app` where `<dirname>` is the folder name under `/Users/benwinzer/Desktop/Website Collection/websites/`.
+Each portfolio project in `lib/data.ts` links to a live Vercel deployment. The naming convention is `winzer-<dirname>.vercel.app` where `<dirname>` is the folder name under `/Users/benwinzer/Projects/Website Collection/websites/`.
 
 | Project (data.ts) | Directory | Live URL |
 |---|---|---|
@@ -154,6 +154,7 @@ Each portfolio project in `lib/data.ts` links to a live Vercel deployment. The n
 | Kai Nakamura | `photography` | `https://winzer-photography.vercel.app` |
 | Jot | `jot` | `https://winzer-jot.vercel.app` |
 | IRONSIDE | `ironside` | `https://winzer-ironside.vercel.app` |
+| SynMedia | n/a (external) | `https://synmedia-preview.vercel.app` |
 
 Two additional sites are deployed but not currently featured in the portfolio:
 

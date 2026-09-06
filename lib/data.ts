@@ -75,6 +75,15 @@ export const PROJECTS: Project[] = [
     imageWidth: 1818,
     imageHeight: 884,
   },
+  {
+    id: 'synmedia',
+    name: 'SynMedia',
+    tagline: 'Done-for-you YouTube growth agency',
+    url: 'https://synmedia-preview.vercel.app',
+    image: '/projects/synmedia-work.png',
+    imageWidth: 1800,
+    imageHeight: 780,
+  },
 ]
 
 export const PROCESS_SECTION = {

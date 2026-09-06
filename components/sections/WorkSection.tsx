@@ -67,11 +67,13 @@ export default function WorkSection() {
           viewport={{ once: true, margin: '-80px' }}
           variants={staggerContainer}
         >
-          {[
-            [PROJECTS[0], PROJECTS[3]],
-            [PROJECTS[1], PROJECTS[4]],
-            [PROJECTS[2], PROJECTS[5]],
-          ].map((col, ci) => (
+          {PROJECTS.reduce<Project[][]>(
+            (cols, project, i) => {
+              cols[i % 3].push(project)
+              return cols
+            },
+            [[], [], []],
+          ).map((col, ci) => (
             <motion.div
               key={ci}
               variants={fadeUp}

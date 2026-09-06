@@ -22,6 +22,7 @@ const CUBE_CONFIGS: CubeConfig[] = [
   { project: PROJECTS[3], depth: 0.6, top: '70%', left: '68%', width: 'w-60' },
   { project: PROJECTS[4], depth: 1.0, top: '38%', left: '78%', width: 'w-48' },
   { project: PROJECTS[5], depth: 0.4, top: '82%', left: '35%', width: 'w-40' },
+  { project: PROJECTS[6], depth: 0.9, top: '6%',  left: '44%', width: 'w-44' },
 ]
 
 function CubeImage({ src, name, width, height }: { src: string; name: string; width: number; height: number }) {
