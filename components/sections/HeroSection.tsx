@@ -7,6 +7,10 @@ import { ArrowRight } from 'lucide-react'
 import SpotlightButton from '@/components/ui/SpotlightButton'
 import { HERO, PROJECTS } from '@/lib/data'
 
+// References --color-accent so it follows the theme knob in globals.css.
+const GRID_LINE = 'color-mix(in srgb, var(--color-accent) 8%, transparent)'
+const GRID_LINES = `linear-gradient(to right, ${GRID_LINE} 1px, transparent 1px), linear-gradient(to bottom, ${GRID_LINE} 1px, transparent 1px)`
+
 interface CubeConfig {
   project: (typeof PROJECTS)[0]
   depth: number
@@ -64,7 +68,7 @@ function CubeCard({
 
   return (
     <motion.div
-      className={`absolute ${cfg.width} rounded-lg shadow-[0_4px_24px_rgba(124,58,237,0.25)] overflow-hidden`}
+      className={`absolute ${cfg.width} rounded-lg shadow-accent-sm overflow-hidden`}
       style={{ top: cfg.top, left: cfg.left, x, y }}
     >
       <CubeImage src={cfg.project.image} name={cfg.project.name} width={cfg.project.imageWidth} height={cfg.project.imageHeight} />
@@ -101,7 +105,7 @@ export default function HeroSection() {
       <div
         className="absolute inset-0"
         style={{
-          backgroundImage: 'linear-gradient(to right, rgba(124,58,237,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(124,58,237,0.08) 1px, transparent 1px)',
+          backgroundImage: GRID_LINES,
           backgroundSize: '48px 48px',
           maskImage: 'radial-gradient(ellipse 65% 60% at 50% 50%, transparent 20%, black 75%)',
           WebkitMaskImage: 'radial-gradient(ellipse 65% 60% at 50% 50%, transparent 20%, black 75%)',

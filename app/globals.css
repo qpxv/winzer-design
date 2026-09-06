@@ -1,24 +1,36 @@
 @import "tailwindcss";
 
 @theme {
-  /* Base */
-  --color-bg: #f8f7ff;
-  --color-surface: #f2f0ff;
-  --color-border: #e4e0f5;
+  /* ─────────────────────────────────────────────────────────────
+     THEME KNOB. Change this one value to re-skin the whole site.
+     Everything else (hover/light/muted accents, the tinted
+     neutrals, the accent shadows, and the grid overlays / glows /
+     scrollbar that reference var(--color-accent)) is derived from
+     it. Try #2563eb (blue), #0f172a (near-black), #db2777 (pink),
+     #059669 (green).
+     ───────────────────────────────────────────────────────────── */
+  --color-accent: #7c3aed;
 
-  /* Text */
+  /* Derived accent shades */
+  --color-accent-hover: color-mix(in oklab, var(--color-accent), black 14%);
+  --color-accent-light: color-mix(in oklab, var(--color-accent), white 90%);
+  --color-accent-muted: color-mix(in oklab, var(--color-accent), white 82%);
+  --color-btn-primary: color-mix(in oklab, var(--color-accent), white 12%);
+
+  /* Neutral ground, faintly tinted by the accent so it stays cohesive */
+  --color-bg: color-mix(in oklab, var(--color-accent) 3%, white);
+  --color-surface: color-mix(in oklab, var(--color-accent) 6%, white);
+  --color-border: color-mix(in oklab, var(--color-accent) 14%, white);
+
+  /* Text (kept neutral) */
   --color-text-primary: #0a0a0b;
   --color-text-secondary: #6b6b80;
   --color-text-muted: #a0a0b0;
 
-  /* Accent */
-  --color-accent: #7c3aed;
-  --color-accent-hover: #6d28d9;
-  --color-accent-light: #f3eeff;
-  --color-accent-muted: #ede9fe;
-
-  /* Button */
-  --color-btn-primary: #8b5cf6;
+  /* Accent-tinted shadows → shadow-accent-sm / -md / -lg utilities */
+  --shadow-accent-sm: 0 4px 24px color-mix(in srgb, var(--color-accent) 22%, transparent);
+  --shadow-accent-md: 0 24px 80px -24px color-mix(in srgb, var(--color-accent) 35%, transparent);
+  --shadow-accent-lg: 0 32px 90px -32px color-mix(in srgb, var(--color-accent) 40%, transparent);
 
   /* Fonts */
   --font-sans: var(--font-dm-sans);
@@ -66,16 +78,16 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(124, 58, 237, 0.2);
+  background: color-mix(in srgb, var(--color-accent) 20%, transparent);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(124, 58, 237, 0.35);
+  background: color-mix(in srgb, var(--color-accent) 35%, transparent);
 }
 
 body {
   font-family: var(--font-dm-sans), sans-serif;
-  background-color: #f8f7ff;
-  color: #0a0a0b;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
 }
