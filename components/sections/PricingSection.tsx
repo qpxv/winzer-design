@@ -131,6 +131,29 @@ export default function PricingSection() {
           ))}
         </motion.div>
 
+        <motion.div
+          className="max-w-3xl mx-auto mt-4 flex flex-col gap-3 rounded-2xl border border-border bg-bg px-6 py-5 sm:flex-row sm:items-center sm:justify-between"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-80px' }}
+          variants={fadeUp}
+        >
+          <div className="max-w-md">
+            <p className="font-serif italic text-sm text-accent">{PRICING_SECTION.retainer.label}</p>
+            <p className="mt-1 text-sm text-text-secondary leading-relaxed">
+              {PRICING_SECTION.retainer.description}
+            </p>
+          </div>
+          <div className="flex shrink-0 items-baseline gap-1">
+            <span className="text-xs text-text-secondary">{PRICING_SECTION.retainer.prefix}</span>
+            <DollarSign size={14} className="self-center text-text-secondary" />
+            <span className="font-serif text-3xl leading-none tracking-tight text-text-primary">
+              {PRICING_SECTION.retainer.price}
+            </span>
+            <span className="text-sm text-text-secondary">{PRICING_SECTION.retainer.cadence}</span>
+          </div>
+        </motion.div>
+
         <p className="text-text-secondary text-sm text-center mt-10">
           {PRICING_SECTION.note}{' '}
           <button

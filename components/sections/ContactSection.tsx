@@ -34,9 +34,14 @@ export default function ContactSection() {
           variants={fadeUp}
           className="mt-16 pt-10 border-t border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8"
         >
-          <p className="text-white/50 text-base leading-relaxed max-w-sm">
-            {CONTACT_SECTION.subheading}
-          </p>
+          <div className="max-w-sm">
+            <p className="text-white/50 text-base leading-relaxed">
+              {CONTACT_SECTION.subheading}
+            </p>
+            <p className="text-white/40 text-sm leading-relaxed mt-3">
+              {CONTACT_SECTION.guarantee}
+            </p>
+          </div>
           <SpotlightButton
             onClick={() => window.dispatchEvent(new CustomEvent('open-calendly'))}
           >

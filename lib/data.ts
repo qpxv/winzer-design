@@ -5,11 +5,18 @@ import type {
   TestimonialScreenshot,
   PricingTier,
   ComparisonRow,
+  FaqItem,
 } from '@/types'
 
 export const NAV = {
   logo: 'Winzer Design',
-  links: ['Work', 'Process', 'Pricing'],
+  links: [
+    { label: 'Work', href: '#work' },
+    { label: 'Process', href: '#process' },
+    { label: 'Compare', href: '#comparison' },
+    { label: 'Pricing', href: '#pricing' },
+    { label: 'FAQ', href: '#faq' },
+  ],
   cta: 'Book a call',
 }
 
@@ -19,6 +26,7 @@ export const HERO = {
   subheadline: 'Custom-designed, custom-coded sites built to convert. Not templates, not page builders, not shortcuts. Live in days, not months.',
   cta: 'Book a free call',
   ctaSecondary: 'See the work',
+  note: 'See a real draft of your site before you pay anything',
 }
 
 export const WORK_SECTION = {
@@ -123,10 +131,21 @@ export const PROCESS_STEPS: ProcessStep[] = [
   },
   {
     number: '3',
-    title: 'Launch & handoff',
-    description: "We go live. You get the code, the accounts, and a real walkthrough, not a zip file and radio silence.",
+    title: 'Launch & aftercare',
+    description: "We go live. I connect your domain, set up hosting, and run the final checks. From there it stays looked after: updates, fixes, and small changes whenever you need them.",
   },
 ]
+
+export const ABOUT_SECTION = {
+  label: 'The person',
+  heading: 'One person, start to finish',
+  paragraphs: [
+    "I'm Ben. I design and build websites for small businesses and personal brands, on my own. No account managers, no juniors, no passing your project down a chain.",
+    "You talk to the person actually doing the work. Decisions happen in hours, not weeks, and the site gets built the way we agreed, not the way a template wants it to be.",
+    "Once it's live I keep it that way: hosted, fast, up to date, and easy to change whenever your business does.",
+  ],
+  signoff: 'Ben Winzer',
+}
 
 export const TESTIMONIALS_SECTION = {
   label: 'Testimonials',
@@ -179,6 +198,14 @@ export const PRICING_SECTION = {
   note: "Not sure which fits? We can work that out on a call.",
   cta: 'Book a call',
   recommendedLabel: 'Recommended',
+  retainer: {
+    prefix: 'From',
+    price: '150',
+    cadence: '/mo',
+    label: 'Hosting & care',
+    description:
+      'Every site includes ongoing hosting, domain management, updates, and small changes whenever you need them.',
+  },
 }
 
 export const PRICING_TIERS: PricingTier[] = [
@@ -238,9 +265,58 @@ export const CONTACT_SECTION = {
   heading: 'Your site starts with a',
   headingAccent: 'conversation',
   subheading: "Book a slot. We'll talk through what you need, what's realistic, and whether it's a fit. Thirty minutes, no pressure.",
+  guarantee: "Book a call and I'll build you a real first draft, on me. No commitment.",
   cta: 'Book a free call',
   calendlyUrl: 'https://calendly.com/benwinzer/website-call?hide_gdpr_banner=1',
 }
+
+export const FAQ_SECTION = {
+  label: 'Questions',
+  heading: 'Before you book',
+}
+
+export const FAQS: FaqItem[] = [
+  {
+    question: 'What does the monthly fee cover?',
+    answer:
+      "Hosting, your domain setup and renewal, security and framework updates, uptime monitoring, and small content or design changes whenever you need them. No hourly billing for the little stuff.",
+  },
+  {
+    question: 'Do I own the website?',
+    answer:
+      "You own your domain, your content, your copy, and your brand. The build runs on my setup so I can keep it hosted, updated, and fast as part of the monthly. If you ever want to move it in-house, we can talk through a one-off buyout.",
+  },
+  {
+    question: 'Can I cancel?',
+    answer:
+      "Yes, it's month to month. Give 30 days notice and I'll hand your domain back and point it wherever you like. The hosted site comes offline at the end of that month unless you take a buyout.",
+  },
+  {
+    question: 'How fast is it?',
+    answer:
+      "You'll see a real first draft within a few days of our call. Most sites go live one to two weeks after that, depending on how quickly you get me feedback.",
+  },
+  {
+    question: 'What do you need from me?',
+    answer:
+      "Half an hour on a call, your logo and brand assets if you have them, and any copy you've already written. I handle the rest, including copy direction if you need it.",
+  },
+  {
+    question: "What if I don't like the design?",
+    answer:
+      "You'll see a draft before you pay anything. If it's not right, you walk away and owe nothing. Once we're building, there's room for revisions until it is right.",
+  },
+  {
+    question: 'Do you build online stores or web apps?',
+    answer:
+      "No. I build marketing sites, landing pages, and small brochure sites. If you need e-commerce or a complex app, I'll tell you on the call and point you somewhere better.",
+  },
+  {
+    question: 'Can you redo my existing site instead of starting fresh?',
+    answer:
+      "Usually a fresh build is faster and cleaner than untangling a page builder, and you end up with something better. We can weigh it up on the call.",
+  },
+]
 
 export const FOOTER = {
   email: 'ben@winzerdesign.com',

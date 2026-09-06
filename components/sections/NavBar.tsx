@@ -35,10 +35,10 @@ export default function NavBar() {
           {NAV.logo}
         </a>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-6 lg:gap-8">
           {NAV.links.map((link) => (
-            <a key={link} href={`#${link.toLowerCase()}`} className={linkClass}>
-              {link}
+            <a key={link.href} href={link.href} className={linkClass}>
+              {link.label}
             </a>
           ))}
         </nav>
@@ -62,12 +62,12 @@ export default function NavBar() {
         <div className="md:hidden bg-white/95 backdrop-blur-md border-b border-border px-6 pb-6 pt-2 flex flex-col gap-4">
           {NAV.links.map((link) => (
             <a
-              key={link}
-              href={`#${link.toLowerCase()}`}
+              key={link.href}
+              href={link.href}
               className={linkClass}
               onClick={() => setMobileOpen(false)}
             >
-              {link}
+              {link.label}
             </a>
           ))}
           <Button

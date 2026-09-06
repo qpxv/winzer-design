@@ -58,3 +58,8 @@ export interface ComparisonRow {
   feature: string
   them: string
 }
+
+export interface FaqItem {
+  question: string
+  answer: string
+}
