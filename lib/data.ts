@@ -13,17 +13,17 @@ export const NAV = {
 }
 
 export const HERO = {
-  headline: 'Websites that mean',
-  headlineAccent: 'business.',
-  subheadline: 'I design and build websites that make people stop, read, and get in touch. Custom code, considered design — no shortcuts.',
+  headline: 'Websites that',
+  headlineAccent: 'get results.',
+  subheadline: 'Custom-designed, custom-coded sites built to convert — not templates, not page builders, not shortcuts. Live in days, not months.',
   cta: 'Book a free call',
   ctaSecondary: 'See the work',
 }
 
 export const WORK_SECTION = {
   label: 'The work',
-  heading: 'Every site built from scratch.',
-  subheading: 'The design comes from your brand. The code is clean. The result is something that actually reflects what you do.',
+  heading: 'Built from scratch. Every time.',
+  subheading: 'No templates, no drag-and-drop builders. Just clean code and design that actually looks like your brand — not someone else\'s theme.',
 }
 
 // `url` is the live deployment used for the in-app preview iframe. `domain` is the
@@ -104,34 +104,34 @@ export const PROJECTS: Project[] = [
 
 export const PROCESS_SECTION = {
   label: 'How it works',
-  heading: 'Simple process. No surprises.',
+  heading: 'Three steps. No surprises.',
   subheading:
-    'Three steps from first call to live site. You always know what happens next, what it costs, and where things stand.',
+    'From first call to live site, you always know what happens next, what it costs, and where things stand.',
 }
 
 export const PROCESS_STEPS: ProcessStep[] = [
   {
     number: '1',
     title: 'Discovery call',
-    description: "A 30-minute conversation to understand what you actually need. I'll tell you honestly if I think I can help, and how. No sales pitch.",
+    description: "A 30-minute call to figure out what you actually need. I'll tell you straight if I can help, and how — no pitch.",
   },
   {
     number: '2',
     title: 'Design & build',
-    description: "I take care of everything: design, code, copy direction. You'll see it taking shape as we go, not one big reveal at the end.",
+    description: "I handle the design, the code, and the copy direction — all of it. You watch it take shape as we go, not wait for one big reveal.",
   },
   {
     number: '3',
     title: 'Launch & handoff',
-    description: "We go live. You get the code, the accounts, and a proper walkthrough, not a zip file and a goodbye.",
+    description: "We go live. You get the code, the accounts, and a real walkthrough — not a zip file and radio silence.",
   },
 ]
 
 export const TESTIMONIALS_SECTION = {
-  label: 'Kind words',
-  heading: 'What clients say.',
+  label: 'Testimonials',
+  heading: 'Clients say it best.',
   subheading:
-    'Straight from the chat. Unedited messages from people I’ve built for.',
+    'Real messages, unedited, from people I\'ve built for.',
 }
 
 // Real chat screenshots for the scrolling testimonial wall. Deliberately not in
@@ -174,7 +174,7 @@ export const TESTIMONIALS: Testimonial[] = [
 export const PRICING_SECTION = {
   label: 'Pricing',
   heading: 'Fixed pricing. No hourly rates.',
-  subheading: "You'll know the cost before anything starts. No scope creep, no awkward conversations at the end.",
+  subheading: "Know the cost before anything starts. No scope creep, no awkward conversations at the end.",
   note: "Not sure which fits? We can work that out on a call.",
   cta: 'Book a call',
   recommendedLabel: 'Recommended',
@@ -185,7 +185,7 @@ export const PRICING_TIERS: PricingTier[] = [
     id: 'landing',
     name: 'Landing Page',
     price: '500',
-    description: 'One focused page that does one thing well. Good for launches, personal brands, or anyone who needs a clean, credible presence without the complexity.',
+    description: 'One page, done right. Built for launches, personal brands, or anyone who needs a clean, credible presence — fast.',
     features: [
       'Custom design & code',
       'Mobile responsive',
@@ -198,7 +198,7 @@ export const PRICING_TIERS: PricingTier[] = [
     id: 'full',
     name: 'Full Website',
     price: '1,000',
-    description: "A proper site with room to tell your story. Usually home, about, and contact — though we'll work out what actually makes sense for you.",
+    description: "A full site with room to tell your story properly. Home, about, and contact — or whatever actually makes sense for your business.",
     features: [
       'Everything in Landing Page',
       'Unlimited pages',
@@ -214,7 +214,7 @@ export const CONTACT_SECTION = {
   label: 'Start a project',
   heading: 'Your site starts with a',
   headingAccent: 'conversation.',
-  subheading: "Book a slot. We'll talk through what you need, what's realistic, and whether it's a good fit. Half an hour, no commitment.",
+  subheading: "Book a slot. We'll talk through what you need, what's realistic, and whether it's a fit. Thirty minutes, no pressure.",
   cta: 'Book a free call',
   calendlyUrl: 'https://calendly.com/benwinzer/website-call?hide_gdpr_banner=1',
 }
