@@ -15,7 +15,7 @@ export const NAV = {
 export const HERO = {
   headline: 'Websites that',
   headlineAccent: 'get results.',
-  subheadline: 'Custom-designed, custom-coded sites built to convert — not templates, not page builders, not shortcuts. Live in days, not months.',
+  subheadline: 'Custom-designed, custom-coded sites built to convert. Not templates, not page builders, not shortcuts. Live in days, not months.',
   cta: 'Book a free call',
   ctaSecondary: 'See the work',
 }
@@ -23,7 +23,7 @@ export const HERO = {
 export const WORK_SECTION = {
   label: 'The work',
   heading: 'Built from scratch. Every time.',
-  subheading: 'No templates, no drag-and-drop builders. Just clean code and design that actually looks like your brand — not someone else\'s theme.',
+  subheading: 'No templates, no drag-and-drop builders. Just clean code and design that actually looks like your brand, not someone else\'s theme.',
 }
 
 // `url` is the live deployment used for the in-app preview iframe. `domain` is the
@@ -113,17 +113,17 @@ export const PROCESS_STEPS: ProcessStep[] = [
   {
     number: '1',
     title: 'Discovery call',
-    description: "A 30-minute call to figure out what you actually need. I'll tell you straight if I can help, and how — no pitch.",
+    description: "A 30-minute call to figure out what you actually need. I'll tell you straight if I can help, and how. No pitch.",
   },
   {
     number: '2',
     title: 'Design & build',
-    description: "I handle the design, the code, and the copy direction — all of it. You watch it take shape as we go, not wait for one big reveal.",
+    description: "I handle the design, the code, and the copy direction, all of it. You watch it take shape as we go, not wait for one big reveal.",
   },
   {
     number: '3',
     title: 'Launch & handoff',
-    description: "We go live. You get the code, the accounts, and a real walkthrough — not a zip file and radio silence.",
+    description: "We go live. You get the code, the accounts, and a real walkthrough, not a zip file and radio silence.",
   },
 ]
 
@@ -185,7 +185,7 @@ export const PRICING_TIERS: PricingTier[] = [
     id: 'landing',
     name: 'Landing Page',
     price: '500',
-    description: 'One page, done right. Built for launches, personal brands, or anyone who needs a clean, credible presence — fast.',
+    description: 'One page, done right. Built for launches, personal brands, or anyone who needs a clean, credible presence, delivered fast.',
     features: [
       'Custom design & code',
       'Mobile responsive',
@@ -198,7 +198,7 @@ export const PRICING_TIERS: PricingTier[] = [
     id: 'full',
     name: 'Full Website',
     price: '1,000',
-    description: "A full site with room to tell your story properly. Home, about, and contact — or whatever actually makes sense for your business.",
+    description: "A full site with room to tell your story properly. Home, about, and contact, or whatever actually makes sense for your business.",
     features: [
       'Everything in Landing Page',
       'Unlimited pages',
