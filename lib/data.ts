@@ -220,7 +220,6 @@ export const CONTACT_SECTION = {
 }
 
 export const FOOTER = {
-  logo: 'Winzer Design',
   email: 'ben@winzerdesign.com',
-  note: 'Built by me, obviously.',
+  x: { label: '@b_winzer', url: 'https://x.com/b_winzer' },
 }
