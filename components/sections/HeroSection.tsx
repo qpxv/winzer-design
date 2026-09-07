@@ -68,7 +68,7 @@ function CubeCard({
 
   return (
     <motion.div
-      className={`absolute ${cfg.width} rounded-lg shadow-accent-sm overflow-hidden`}
+      className={`absolute hidden md:block ${cfg.width} rounded-lg shadow-accent-sm overflow-hidden`}
       style={{ top: cfg.top, left: cfg.left, x, y }}
     >
       <CubeImage src={cfg.project.image} name={cfg.project.name} width={cfg.project.imageWidth} height={cfg.project.imageHeight} />
@@ -154,15 +154,6 @@ export default function HeroSection() {
             <ArrowRight size={16} />
           </a>
         </motion.div>
-
-        <motion.p
-          className="mt-6 text-xs text-text-muted"
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.45, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] }}
-        >
-          {HERO.note}
-        </motion.p>
       </div>
     </section>
   )

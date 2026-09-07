@@ -26,7 +26,6 @@ export const HERO = {
   subheadline: 'Custom-designed, custom-coded sites built to convert. Not templates, not page builders, not shortcuts. Live in days, not months.',
   cta: 'Book a free call',
   ctaSecondary: 'See the work',
-  note: 'See a real draft of your site before you pay anything',
 }
 
 export const WORK_SECTION = {
