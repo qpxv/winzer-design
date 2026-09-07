@@ -279,42 +279,42 @@ export const FAQS: FaqItem[] = [
   {
     question: 'What does the monthly fee cover?',
     answer:
-      "Hosting, your domain setup and renewal, security and framework updates, uptime monitoring, and small content or design changes whenever you need them. No hourly billing for the little stuff.",
+      "Hosting, your domain setup and renewal, security and framework updates, uptime monitoring, and small content or design changes whenever you need them.",
   },
   {
     question: 'Do I own the website?',
     answer:
-      "You own your domain, your content, your copy, and your brand. The build runs on my setup so I can keep it hosted, updated, and fast as part of the monthly. If you ever want to move it in-house, we can talk through a one-off buyout.",
+      "Your domain, content, copy, and brand are yours. The site runs on my hosting so I can keep it fast, monitored, and up to date as part of the monthly. If you ever want to move hosting in-house, I'll hand everything over and help you migrate it across.",
   },
   {
-    question: 'Can I cancel?',
+    question: 'What happens if I want to stop working together?',
     answer:
-      "Yes, it's month to month. Give 30 days notice and I'll hand your domain back and point it wherever you like. The hosted site comes offline at the end of that month unless you take a buyout.",
+      "It's month to month. Give 30 days notice and I'll hand your domain back and point it wherever you like. At the end of that month the site comes off my hosting, and hosting it from there is up to you.",
   },
   {
-    question: 'How fast is it?',
+    question: 'How soon will my website be live?',
     answer:
-      "You'll see a real first draft within a few days of our call. Most sites go live one to two weeks after that, depending on how quickly you get me feedback.",
+      "You'll see a real first draft within a few days of our call. Most sites go live one to two weeks after that.",
   },
   {
-    question: 'What do you need from me?',
+    question: 'What do you need from me to get started?',
     answer:
       "Half an hour on a call, your logo and brand assets if you have them, and any copy you've already written. I handle the rest, including copy direction if you need it.",
   },
   {
-    question: "What if I don't like the design?",
+    question: "What if the design isn't what I pictured?",
     answer:
-      "You'll see a draft before you pay anything. If it's not right, you walk away and owe nothing. Once we're building, there's room for revisions until it is right.",
+      "We keep refining it until it matches what you had in mind. You booked a call because you want this done right, so revisions are part of the process, not an extra.",
   },
   {
     question: 'Do you build online stores or web apps?',
     answer:
-      "No. I build marketing sites, landing pages, and small brochure sites. If you need e-commerce or a complex app, I'll tell you on the call and point you somewhere better.",
+      "Yes. Alongside marketing sites I've built online stores for ecommerce brands and web apps backed by databases, with security handled properly. If that's what you need, bring it to the call.",
   },
   {
     question: 'Can you redo my existing site instead of starting fresh?',
     answer:
-      "Usually a fresh build is faster and cleaner than untangling a page builder, and you end up with something better. We can weigh it up on the call.",
+      "Yes. Depending on how your current site was built it can get complicated to untangle, especially with page builders. Starting fresh usually lets me use custom code and get you a cleaner, faster result, so we'll weigh it up on the call.",
   },
 ]
 
