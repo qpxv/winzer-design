@@ -140,9 +140,9 @@ export const ABOUT_SECTION = {
   label: 'The person',
   heading: 'One person, start to finish',
   paragraphs: [
-    "I'm Ben. I design and build websites for small businesses and personal brands, on my own. No account managers, no juniors, no passing your project down a chain.",
-    "You talk to the person actually doing the work. Decisions happen in hours, not weeks, and the site gets built the way we agreed, not the way a template wants it to be.",
-    "Once it's live I keep it that way: hosted, fast, up to date, and easy to change whenever your business does.",
+    "I'm Ben. My dad sat me down at his computer when I was nine and showed me how a web page was made. I changed a line, the page changed with it, and that was pretty much what got me hooked.",
+    "I kept building websites through school, small things for myself at first, then websites for people who asked. Now it's what I do full time. Design and build websites and landing pages for ecommerce brands, personal brands, and small businesses.",
+    "After launch I look after your website, which includes hosting, updates, and changes as the business grows.",
   ],
   signoff: 'Ben Winzer',
 }
@@ -202,7 +202,7 @@ export const PRICING_SECTION = {
     prefix: 'From',
     price: '150',
     cadence: '/mo',
-    label: 'Hosting & care',
+    label: 'Maintenance',
     description:
       'A separate monthly plan on top of the build price. Covers hosting, domain management, updates, and small changes whenever you need them.',
   },
