@@ -137,14 +137,21 @@ export const PROCESS_STEPS: ProcessStep[] = [
 ]
 
 export const ABOUT_SECTION = {
-  label: 'The person',
-  heading: 'One person, start to finish',
+  label: 'About me',
+  heading: 'It started on my dad\'s computer',
   paragraphs: [
     "I'm Ben. My dad sat me down at his computer when I was nine and showed me how a web page was made. I changed a line, the page changed with it, and that was pretty much what got me hooked.",
     "I kept building websites through school, small things for myself at first, then websites for people who asked. Now it's what I do full time. Design and build websites and landing pages for ecommerce brands, personal brands, and small businesses.",
     "After launch I look after your website, which includes hosting, updates, and changes as the business grows.",
   ],
   signoff: 'Ben Winzer',
+  // Drop a portrait at public/about/ben.jpg (portrait orientation, ~800x1000).
+  photo: {
+    src: '/about/ben.jpg',
+    alt: 'Ben Winzer',
+    width: 800,
+    height: 1000,
+  },
 }
 
 export const TESTIMONIALS_SECTION = {
