@@ -25,15 +25,15 @@ function Shot({
   return (
     <figure>
       <div
-        className={`relative overflow-hidden rounded-xl border border-border bg-bg ${
-          wide ? 'aspect-16/10' : 'aspect-4/3'
+        className={`relative overflow-hidden rounded-xl border border-border bg-bg shadow-accent-md ${
+          wide ? 'aspect-16/10 max-w-2xl' : 'aspect-video'
         }`}
       >
         <Image
           src={src}
           alt={alt}
           fill
-          sizes={wide ? '100vw' : '(min-width: 640px) 50vw, 100vw'}
+          sizes={wide ? '(min-width: 768px) 42rem, 100vw' : '(min-width: 640px) 50vw, 100vw'}
           className="object-cover object-top"
         />
       </div>
@@ -84,9 +84,9 @@ function CaseStudyBlock({ study, index }: { study: CaseStudy; index: number }) {
 
       <div className="mt-12 grid gap-10 md:grid-cols-2">
         <motion.div variants={fadeUp}>
-          <h4 className="text-sm font-medium text-accent mb-3">The brief</h4>
+          <h4 className="text-sm font-medium text-accent mb-3">The challenge</h4>
           <div className="space-y-3">
-            {study.brief.map((paragraph) => (
+            {study.challenge.map((paragraph) => (
               <p key={paragraph} className="text-text-secondary text-base leading-relaxed">
                 {paragraph}
               </p>

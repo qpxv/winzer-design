@@ -15,13 +15,6 @@ export interface ProcessStep {
   description: string
 }
 
-export interface Testimonial {
-  id: number
-  quote: string
-  name: string
-  role: string
-}
-
 export interface TestimonialScreenshot {
   id: number
   // null while it's a placeholder; set to a path in /public once the real
@@ -76,7 +69,7 @@ export interface CaseStudy {
     name: string
     role: string
   }
-  brief: string[]
+  challenge: string[]
   before?: { src: string; alt: string }
   after: { src: string; alt: string }
   stats: CaseStudyStat[]

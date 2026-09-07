@@ -1,7 +1,6 @@
 import type {
   Project,
   ProcessStep,
-  Testimonial,
   TestimonialScreenshot,
   PricingTier,
   ComparisonRow,
@@ -17,7 +16,7 @@ export const NAV = {
   links: [
     { label: 'Work', href: '#work' },
     { label: 'Process', href: '#process' },
-    { label: 'Compare', href: '#comparison' },
+    { label: 'Case studies', href: '#case-study' },
     { label: 'Pricing', href: '#pricing' },
     { label: 'FAQ', href: '#faq' },
   ],
@@ -146,10 +145,11 @@ export const ABOUT_SECTION = {
   paragraphs: [
     "I'm Ben. My dad sat me down at his computer when I was nine and showed me how a web page was made. I changed a line, the page changed with it, and that was pretty much what got me hooked.",
     "I kept building websites through school, small things for myself at first, then websites for people who asked. Now it's what I do full time. Design and build websites and landing pages for ecommerce brands, personal brands, and small businesses.",
-    "After launch I look after your website, which includes hosting, updates, and changes as the business grows.",
+    "After launch the site stays looked after: hosting, updates, and changes as the business grows.",
   ],
   signoff: 'Ben Winzer',
-  // Drop a portrait at public/about/ben.jpg (portrait orientation, ~800x1000).
+  // Placeholder: back-view beach shot. Swap public/about/ben.jpg for a
+  // front-facing portrait when available (portrait orientation, ~800x1000).
   photo: {
     src: '/about/ben.jpg',
     alt: 'Ben Winzer',
@@ -179,27 +179,6 @@ export const TESTIMONIAL_SCREENSHOTS: TestimonialScreenshot[] = [
   { id: 3, src: '/testimonials/ss3.png', alt: 'Client message: "this website is beautiful on mobile"', width: 271, height: 192 },
   { id: 8, src: '/testimonials/ss8.png', alt: 'Client message: "damn looks clean man"', width: 347, height: 216 },
   { id: 5, src: '/testimonials/ss5.png', alt: 'Client message: "this is fucking nice, im calling you maestro from now"', width: 294, height: 295 },
-]
-
-export const TESTIMONIALS: Testimonial[] = [
-  {
-    id: 1,
-    quote: "Hey Ben - needed to reach out personally. Your speed and initiative are next level. Had to tweak some copy for Meta's guidelines, but your work ethic is seriously impressive. You're crushing it way beyond your years and I'm genuinely excited to see where we can take this together ⚡️",
-    name: 'Darrell Kawooya',
-    role: 'E-Commerce Store',
-  },
-  {
-    id: 2,
-    quote: "The thing I like the most about your service was that you were able to deliever on a short time schedule. I needed multiple last minute edits that were handled not only fast but with the quality of the webiste.\n\nBefore we started working together I was using a carrd website that looked unprofessional and only able to convert people that I had built up a lot of trust with. After working with you I now have a sales page that has already converted but will also continue to a valuable asset in my business.\n\nI would recommend you to anyone who wants to make money online with a professional looking webiste.",
-    name: 'Tyler Van Acker',
-    role: 'Physical Coach',
-  },
-  {
-    id: 3,
-    quote: "I liked the speed in which you replied and how fast you completed the project. I was taking forever when I tried it and I was amazed at how little time it took for you to do it.\n\nI would, absolutely recommend you to anyone else. Finding someone that’s easy to work with like you and is very willing and creative to help someone solve their problem is rare. If I know someone who needs your services, I would definitely recommend you.\n\n",
-    name: 'Daniel Wedel',
-    role: 'Copywriter',
-  },
 ]
 
 export const PRICING_SECTION = {
@@ -299,7 +278,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       name: 'Tyler Van Acker',
       role: 'Physical coach',
     },
-    brief: [
+    challenge: [
       "Tyler came to us nine days out from launching a new coaching offer, still selling it off a carrd page. It looked amateur, buried the offer, and only ever closed people who already knew him. Every cold visitor left without buying.",
       "He needed a real sales page: one that could earn a stranger's trust and close them, finished and live before launch day. The date could not move.",
     ],
@@ -313,7 +292,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     },
     stats: [
       { value: '$2.2K', label: 'first launch weekend' },
-      { value: '9 days', label: 'brief to live' },
+      { value: '9 days', label: 'start to launch' },
     ],
     outcome:
       "We designed, wrote, and built the full page in nine days, absorbing round after round of last-minute changes without moving the deadline. It went live before the launch. In the first three days it brought in $2,200, including buyers the old page would never have closed, and paid for itself several times over inside the first week. It is still Tyler's sales page today, doing the same job every time he sends traffic to it.",
@@ -327,7 +306,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       name: 'Refined Berlin',
       role: 'Fashion ecommerce',
     },
-    brief: [
+    challenge: [
       "Refined Berlin had the products and the brand, but the store barely converted. People landed, looked around, and left without buying.",
       "The site was not built to sell. Navigation was unclear, the path to checkout was cluttered, and nothing guided a shopper from landing on a page to placing an order.",
     ],

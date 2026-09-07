@@ -1,10 +1,11 @@
 import { FOOTER } from '@/lib/data'
+import { SITE } from '@/lib/site'
 
 export default function FooterSection() {
   return (
     <footer className="border-t border-border py-8">
       <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-        <span className="text-text-muted text-sm">&copy; {new Date().getFullYear()} Winzer Design</span>
+        <span className="text-text-muted text-sm">&copy; {new Date().getFullYear()} {SITE.name}</span>
 
         <a
           href={`mailto:${FOOTER.email}`}
