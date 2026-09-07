@@ -18,14 +18,11 @@ const dmSerif = DM_Serif_Display({
   variable: "--font-dm-serif",
 });
 
-const TITLE = `${SITE.name} — Websites that get results`;
+const TITLE = SITE.name;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
-  title: {
-    default: TITLE,
-    template: `%s — ${SITE.name}`,
-  },
+  title: TITLE,
   description: SITE.description,
   alternates: { canonical: "/" },
   openGraph: {
