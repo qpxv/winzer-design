@@ -38,9 +38,6 @@ export default function ContactSection() {
             <p className="text-white/50 text-base leading-relaxed">
               {CONTACT_SECTION.subheading}
             </p>
-            <p className="text-white/40 text-sm leading-relaxed mt-3">
-              {CONTACT_SECTION.guarantee}
-            </p>
           </div>
           <SpotlightButton
             onClick={() => window.dispatchEvent(new CustomEvent('open-calendly'))}

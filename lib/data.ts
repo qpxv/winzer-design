@@ -6,7 +6,11 @@ import type {
   PricingTier,
   ComparisonRow,
   FaqItem,
+  CaseStudy,
 } from '@/types'
+
+// Risk-reversal line, shown once in the hero.
+export const GUARANTEE = "Book a call and we'll build you a real first draft, on us. No commitment."
 
 export const NAV = {
   logo: 'Winzer Design',
@@ -26,6 +30,7 @@ export const HERO = {
   subheadline: 'Custom-designed, custom-coded sites built to convert. Not templates, not page builders, not shortcuts. Live in days, not months.',
   cta: 'Book a free call',
   ctaSecondary: 'See the work',
+  guarantee: GUARANTEE,
 }
 
 export const WORK_SECTION = {
@@ -121,17 +126,17 @@ export const PROCESS_STEPS: ProcessStep[] = [
   {
     number: '1',
     title: 'Discovery call',
-    description: "A 30-minute call to figure out what you actually need. I'll tell you straight if I can help, and how. No pitch.",
+    description: "A 30-minute call to figure out what you actually need. We'll tell you straight if we can help, and how. No pitch.",
   },
   {
     number: '2',
     title: 'Design & build',
-    description: "I handle the design, the code, and the copy direction, all of it. You watch it take shape as we go, not wait for one big reveal.",
+    description: "We handle the design, the code, and the copy direction, all of it. You watch it take shape as we go, not wait for one big reveal.",
   },
   {
     number: '3',
     title: 'Launch & aftercare',
-    description: "We go live. I connect your domain, set up hosting, and run the final checks. From there it stays looked after: updates, fixes, and small changes whenever you need them.",
+    description: "We go live. We connect your domain, set up hosting, and run the final checks. From there it stays looked after: updates, fixes, and small changes whenever you need them.",
   },
 ]
 
@@ -157,7 +162,7 @@ export const TESTIMONIALS_SECTION = {
   label: 'Testimonials',
   heading: 'Clients say it best',
   subheading:
-    'Real messages, unedited, from people I\'ve built for.',
+    'Real messages, unedited, from people we\'ve built for.',
 }
 
 // Real chat screenshots for the scrolling testimonial wall. Deliberately not in
@@ -248,7 +253,7 @@ export const COMPARISON_SECTION = {
   label: 'Direct vs. agency',
   heading: 'Everything an agency does, minus the overhead',
   subheading:
-    'An agency can build you a good site too. Line by line, here is what working with me directly gets you that they can\'t.',
+    'An agency can build you a good site too. Line by line, here is what working with us directly gets you that they can\'t.',
   columnUs: 'Winzer Design',
   columnThem: 'Agencies',
 }
@@ -260,7 +265,7 @@ export const COMPARISON_ROWS: ComparisonRow[] = [
   { icon: 'TrendingUp', feature: 'Laid out to convert, not decorate', them: 'Beautiful decks, results left to you' },
   { icon: 'PenLine', feature: 'Copy direction handled with you', them: 'Quoted as a separate workstream' },
   { icon: 'Server', feature: 'Hosting and domain set up and managed for you', them: 'A hosting retainer on top, or handed back to you' },
-  { icon: 'UserRound', feature: 'One person who knows your site, on call', them: 'Sold by a lead, built by whoever is free' },
+  { icon: 'UserRound', feature: 'A direct line to the people who built your site', them: 'Sold by a lead, built by whoever is free' },
   { icon: 'Rocket', feature: 'A draft in days, live shortly after', them: 'A discovery phase, then weeks of rounds' },
   { icon: 'Tag', feature: 'One build price, then a flat monthly that covers everything', them: 'A big upfront quote, then billable hours' },
   { icon: 'Wrench', feature: 'Small changes and fixes handled whenever you need them', them: 'Every change is a new statement of work' },
@@ -271,7 +276,6 @@ export const CONTACT_SECTION = {
   heading: 'Your site starts with a',
   headingAccent: 'conversation',
   subheading: "Book a slot. We'll talk through what you need, what's realistic, and whether it's a fit. Thirty minutes, no pressure.",
-  guarantee: "Book a call and I'll build you a real first draft, on me. No commitment.",
   cta: 'Book a free call',
   calendlyUrl: 'https://calendly.com/benwinzer/website-call?hide_gdpr_banner=1',
 }
@@ -280,6 +284,68 @@ export const FAQ_SECTION = {
   label: 'FAQ',
   heading: 'Questions people ask',
 }
+
+export const CASE_STUDY_SECTION = {
+  label: 'Case studies',
+  cta: 'Book a free call',
+}
+
+// Screenshots live in public/case-study/.
+export const CASE_STUDIES: CaseStudy[] = [
+  {
+    id: 'tyler-van-acker',
+    heading: 'Nine days to launch, no sales page, $2.2K in the first weekend',
+    client: {
+      name: 'Tyler Van Acker',
+      role: 'Physical coach',
+    },
+    brief: [
+      "Tyler came to us nine days out from launching a new coaching offer, still selling it off a carrd page. It looked amateur, buried the offer, and only ever closed people who already knew him. Every cold visitor left without buying.",
+      "He needed a real sales page: one that could earn a stranger's trust and close them, finished and live before launch day. The date could not move.",
+    ],
+    before: {
+      src: '/case-study/tyler-before.jpg',
+      alt: "Tyler's original carrd page",
+    },
+    after: {
+      src: '/case-study/tyler-after.png',
+      alt: "Tyler's new custom sales page",
+    },
+    stats: [
+      { value: '$2.2K', label: 'first launch weekend' },
+      { value: '9 days', label: 'brief to live' },
+    ],
+    outcome:
+      "We designed, wrote, and built the full page in nine days, absorbing round after round of last-minute changes without moving the deadline. It went live before the launch. In the first three days it brought in $2,200, including buyers the old page would never have closed, and paid for itself several times over inside the first week. It is still Tyler's sales page today, doing the same job every time he sends traffic to it.",
+    quote:
+      "Before we started working together I was using a carrd website that looked unprofessional. After working with you I now have a sales page that has already converted but will also continue to be a valuable asset in my business.",
+  },
+  {
+    id: 'refined-berlin',
+    heading: "Tripled a Berlin fashion store's monthly sales in six weeks",
+    client: {
+      name: 'Refined Berlin',
+      role: 'Fashion ecommerce',
+    },
+    brief: [
+      "Refined Berlin had the products and the brand, but the store barely converted. People landed, looked around, and left without buying.",
+      "The site was not built to sell. Navigation was unclear, the path to checkout was cluttered, and nothing guided a shopper from landing on a page to placing an order.",
+    ],
+    after: {
+      src: '/case-study/refined-berlin-after.png',
+      alt: 'A Refined Berlin product page after the rebuild',
+    },
+    stats: [
+      { value: '25x', label: 'conversion rate' },
+      { value: '3x', label: 'monthly sales' },
+      { value: '2 weeks', label: 'strategy to launch' },
+    ],
+    outcome:
+      "We rebuilt the store around one goal: making the buying decision easy. Every page, every step to checkout, and every line of copy was restructured around how their customers actually shop. Strategy to launch took two weeks. The conversion rate went from barely registering to over 1%, a 25x jump. A stock gap around Chinese New Year held the revenue increase to 3x over the first six weeks, and the trend kept climbing after that.",
+    quote:
+      "Hey Ben, needed to reach out personally. Your speed and initiative are next level. Your work ethic is seriously impressive, you're crushing it way beyond your years, and I'm genuinely excited to see where we can take this together.",
+  },
+]
 
 export const FAQS: FaqItem[] = [
   {
@@ -290,17 +356,17 @@ export const FAQS: FaqItem[] = [
   {
     question: 'Do I own the website?',
     answer:
-      "Your domain, content, copy, and brand are yours. The site runs on my hosting so I can keep it fast, monitored, and up to date as part of the monthly. If you ever want to move hosting in-house, I'll hand everything over and help you migrate it across.",
+      "Your domain, content, copy, and brand are yours. The site runs on our hosting so we can keep it fast, monitored, and up to date as part of the monthly. If you ever want to move hosting in-house, we'll hand everything over and help you migrate it across.",
   },
   {
     question: 'What happens if I want to stop working together?',
     answer:
-      "It's month to month. Give 30 days notice and I'll hand your domain back and point it wherever you like. At the end of that month the site comes off my hosting, and hosting it from there is up to you.",
+      "It's month to month. Give 30 days notice and we'll hand your domain back and point it wherever you like. At the end of that month the site comes off our hosting, and hosting it from there is up to you.",
   },
   {
     question: "What if I don't take the monthly plan?",
     answer:
-      "The site stays live for a few days after launch so you can move your domain to it, then it comes off my hosting. From there, hosting, domain management, security updates, and keeping it online are yours to handle. It's a proper Next.js build, not a static HTML page, so it needs a host that supports that and someone comfortable with the framework.",
+      "The site stays live for a few days after launch so you can move your domain to it, then it comes off our hosting. From there, hosting, domain management, security updates, and keeping it online are yours to handle. It's a proper Next.js build, not a static HTML page, so it needs a host that supports that and someone comfortable with the framework.",
   },
   {
     question: 'How soon will my website be live?',
@@ -310,7 +376,7 @@ export const FAQS: FaqItem[] = [
   {
     question: 'What do you need from me to get started?',
     answer:
-      "Half an hour on a call, your logo and brand assets if you have them, and any copy you've already written. I handle the rest, including copy direction if you need it.",
+      "Half an hour on a call, your logo and brand assets if you have them, and any copy you've already written. We handle the rest, including copy direction if you need it.",
   },
   {
     question: "What if the design isn't what I pictured?",
@@ -320,12 +386,12 @@ export const FAQS: FaqItem[] = [
   {
     question: 'Do you build online stores or web apps?',
     answer:
-      "Yes. Alongside marketing sites I've built online stores for ecommerce brands and web apps backed by databases, with security handled properly. If that's what you need, bring it to the call.",
+      "Yes. Alongside marketing sites we've built online stores for ecommerce brands and web apps backed by databases, with security handled properly. If that's what you need, bring it to the call.",
   },
   {
     question: 'Can you redo my existing site instead of starting fresh?',
     answer:
-      "Yes. Depending on how your current site was built it can get complicated to untangle, especially with page builders. Starting fresh usually lets me use custom code and get you a cleaner, faster result, so we'll weigh it up on the call.",
+      "Yes. Depending on how your current site was built it can get complicated to untangle, especially with page builders. Starting fresh usually lets us use custom code and get you a cleaner, faster result, so we'll weigh it up on the call.",
   },
 ]
 

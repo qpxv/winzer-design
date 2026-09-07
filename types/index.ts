@@ -63,3 +63,23 @@ export interface FaqItem {
   question: string
   answer: string
 }
+
+export interface CaseStudyStat {
+  value: string
+  label: string
+}
+
+export interface CaseStudy {
+  id: string
+  heading: string
+  client: {
+    name: string
+    role: string
+  }
+  brief: string[]
+  before?: { src: string; alt: string }
+  after: { src: string; alt: string }
+  stats: CaseStudyStat[]
+  outcome: string
+  quote: string
+}

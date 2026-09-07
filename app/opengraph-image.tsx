@@ -36,7 +36,7 @@ export default function OpengraphImage() {
             Websites that get results
           </div>
           <div style={{ fontSize: 30, color: MUTED, maxWidth: 820, lineHeight: 1.4 }}>
-            Custom-designed, custom-coded. One person, start to finish, live in days.
+            Custom-designed, custom-coded. Handled start to finish, live in days.
           </div>
         </div>
 

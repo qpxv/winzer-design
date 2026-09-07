@@ -53,7 +53,7 @@ export default function ComparisonSection() {
   const lastIndex = COMPARISON_ROWS.length - 1
 
   return (
-    <section id="comparison" className="py-24 md:py-32 bg-surface">
+    <section id="comparison" className="py-24 md:py-32 bg-bg">
       <div className="max-w-5xl mx-auto px-6">
         <motion.div
           className="text-center mb-16"

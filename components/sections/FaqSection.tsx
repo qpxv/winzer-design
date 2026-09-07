@@ -11,7 +11,7 @@ export default function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
-    <section id="faq" className="py-24 md:py-32 bg-surface">
+    <section id="faq" className="py-24 md:py-32 bg-bg">
       <div className="max-w-3xl mx-auto px-6">
         <motion.div
           className="mb-12"
