@@ -85,7 +85,7 @@ function PricingColumn({ tier, isFirst }: { tier: PricingTier; isFirst: boolean 
 
 export default function PricingSection() {
   return (
-    <section id="pricing" className="relative overflow-hidden py-24 md:py-32 bg-surface">
+    <section id="pricing" className="relative overflow-hidden py-24 md:py-32 bg-bg">
       <div
         aria-hidden
         className="absolute inset-0"

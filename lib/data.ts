@@ -278,8 +278,8 @@ export const CONTACT_SECTION = {
 }
 
 export const FAQ_SECTION = {
-  label: 'Questions',
-  heading: 'Before you book',
+  label: 'FAQ',
+  heading: 'Questions people ask',
 }
 
 export const FAQS: FaqItem[] = [

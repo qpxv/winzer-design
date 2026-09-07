@@ -11,7 +11,7 @@ export default function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
-    <section id="faq" className="py-24 md:py-32 bg-bg">
+    <section id="faq" className="py-24 md:py-32 bg-surface">
       <div className="max-w-3xl mx-auto px-6">
         <motion.div
           className="mb-12"
@@ -33,7 +33,7 @@ export default function FaqSection() {
               <div
                 key={faq.question}
                 className={cn(
-                  'rounded-xl border bg-surface transition-colors duration-200',
+                  'rounded-xl border bg-bg transition-colors duration-200',
                   isOpen ? 'border-accent-muted' : 'border-border hover:border-accent-muted',
                 )}
               >

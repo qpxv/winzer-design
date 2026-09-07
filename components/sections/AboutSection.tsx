@@ -7,7 +7,7 @@ import { ABOUT_SECTION } from '@/lib/data'
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-24 md:py-32 bg-surface">
+    <section id="about" className="py-24 md:py-32 bg-bg">
       <motion.div
         className="max-w-4xl mx-auto px-6 grid gap-10 md:grid-cols-[260px_1fr] md:gap-14 md:items-center"
         initial="hidden"

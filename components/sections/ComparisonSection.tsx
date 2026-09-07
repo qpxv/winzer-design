@@ -53,7 +53,7 @@ export default function ComparisonSection() {
   const lastIndex = COMPARISON_ROWS.length - 1
 
   return (
-    <section id="comparison" className="py-24 md:py-32 bg-bg">
+    <section id="comparison" className="py-24 md:py-32 bg-surface">
       <div className="max-w-5xl mx-auto px-6">
         <motion.div
           className="text-center mb-16"
@@ -130,7 +130,7 @@ export default function ComparisonSection() {
                 key={row.feature}
                 className="overflow-hidden rounded-2xl border border-border"
               >
-                <div className="flex items-center gap-2.5 bg-surface px-4 py-3">
+                <div className="flex items-center gap-2.5 bg-bg px-4 py-3">
                   <Icon className="size-4 shrink-0 text-text-muted" strokeWidth={1.75} />
                   <span className="text-sm font-medium text-text-primary">{row.feature}</span>
                 </div>
