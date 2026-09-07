@@ -204,7 +204,7 @@ export const PRICING_SECTION = {
     cadence: '/mo',
     label: 'Hosting & care',
     description:
-      'Every site includes ongoing hosting, domain management, updates, and small changes whenever you need them.',
+      'A separate monthly plan on top of the build price. Covers hosting, domain management, updates, and small changes whenever you need them.',
   },
 }
 
@@ -290,6 +290,11 @@ export const FAQS: FaqItem[] = [
     question: 'What happens if I want to stop working together?',
     answer:
       "It's month to month. Give 30 days notice and I'll hand your domain back and point it wherever you like. At the end of that month the site comes off my hosting, and hosting it from there is up to you.",
+  },
+  {
+    question: "What if I don't take the monthly plan?",
+    answer:
+      "The site stays live for a few days after launch so you can move your domain to it, then it comes off my hosting. From there, hosting, domain management, security updates, and keeping it online are yours to handle. It's a proper Next.js build, not a static HTML page, so it needs a host that supports that and someone comfortable with the framework.",
   },
   {
     question: 'How soon will my website be live?',
