@@ -43,6 +43,16 @@ export const WORK_SECTION = {
 // would look like).
 export const PROJECTS: Project[] = [
   {
+    id: 'ascenxion',
+    name: 'Ascenxion',
+    tagline: 'Done-for-you client acquisition for B2B SaaS',
+    url: 'https://ascenxion-preview.vercel.app',
+    domain: 'ascenxion.io',
+    image: '/projects/ascenxion-work.png',
+    imageWidth: 1800,
+    imageHeight: 1000,
+  },
+  {
     id: 'volta',
     name: 'VOLTA',
     tagline: 'SaaS design studio platform',
