@@ -12,21 +12,32 @@ const GRID_LINE = 'color-mix(in srgb, var(--color-accent) 8%, transparent)'
 const GRID_LINES = `linear-gradient(to right, ${GRID_LINE} 1px, transparent 1px), linear-gradient(to bottom, ${GRID_LINE} 1px, transparent 1px)`
 
 interface CubeConfig {
-  project: (typeof PROJECTS)[0]
+  project: (typeof PROJECTS)[number]
   depth: number
   top: string
   left: string
   width: string
 }
 
+// Looked up by id, never by array index. PROJECTS is ordered for the work
+// grid (newest first), so indexing into it here meant that adding or
+// reordering a project silently reshuffled this collage and dropped whichever
+// one fell off the end. Which projects appear in the hero is a composition
+// choice and belongs in this file, explicitly.
+function projectById(id: string): (typeof PROJECTS)[number] {
+  const project = PROJECTS.find((candidate) => candidate.id === id)
+  if (!project) throw new Error(`HeroSection: no project with id "${id}"`)
+  return project
+}
+
 const CUBE_CONFIGS: CubeConfig[] = [
-  { project: PROJECTS[0], depth: 0.8, top: '20%', left: '8%',  width: 'w-56' },
-  { project: PROJECTS[1], depth: 0.5, top: '16%', left: '72%', width: 'w-52' },
-  { project: PROJECTS[2], depth: 1.2, top: '62%', left: '10%', width: 'w-44' },
-  { project: PROJECTS[3], depth: 0.6, top: '70%', left: '68%', width: 'w-60' },
-  { project: PROJECTS[4], depth: 1.0, top: '38%', left: '78%', width: 'w-48' },
-  { project: PROJECTS[5], depth: 0.4, top: '82%', left: '35%', width: 'w-40' },
-  { project: PROJECTS[6], depth: 0.9, top: '13%', left: '44%', width: 'w-44' },
+  { project: projectById('volta'),        depth: 0.8, top: '20%', left: '8%',  width: 'w-56' },
+  { project: projectById('synmedia'),     depth: 0.5, top: '16%', left: '72%', width: 'w-52' },
+  { project: projectById('jot'),          depth: 1.2, top: '62%', left: '10%', width: 'w-44' },
+  { project: projectById('anil-seth'),    depth: 0.6, top: '70%', left: '68%', width: 'w-60' },
+  { project: projectById('snipvault'),    depth: 1.0, top: '38%', left: '78%', width: 'w-48' },
+  { project: projectById('kai-nakamura'), depth: 0.4, top: '82%', left: '35%', width: 'w-40' },
+  { project: projectById('ironside'),     depth: 0.9, top: '13%', left: '44%', width: 'w-44' },
 ]
 
 function CubeImage({ src, name, width, height }: { src: string; name: string; width: number; height: number }) {
