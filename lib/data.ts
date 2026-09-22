@@ -73,6 +73,16 @@ export const PROJECTS: Project[] = [
     imageHeight: 1000,
   },
   {
+    id: 'lean-after-40',
+    name: 'Lean After 40',
+    tagline: 'Fat-loss coaching for executives over 40',
+    url: 'https://lean-after-40-preview.vercel.app',
+    domain: 'leanafter40.com',
+    image: '/projects/lean-after-40-work.png',
+    imageWidth: 1800,
+    imageHeight: 1000,
+  },
+  {
     id: 'jot',
     name: 'Jot',
     tagline: 'iOS app landing page',

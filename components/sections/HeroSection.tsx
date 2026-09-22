@@ -36,7 +36,7 @@ const CUBE_CONFIGS: CubeConfig[] = [
   { project: projectById('jot'),          depth: 1.2, top: '62%', left: '10%', width: 'w-44' },
   { project: projectById('anil-seth'),    depth: 0.6, top: '70%', left: '68%', width: 'w-60' },
   { project: projectById('snipvault'),    depth: 1.0, top: '38%', left: '78%', width: 'w-48' },
-  { project: projectById('kai-nakamura'), depth: 0.4, top: '82%', left: '35%', width: 'w-40' },
+  { project: projectById('lean-after-40'), depth: 0.4, top: '82%', left: '35%', width: 'w-40' },
   { project: projectById('ascenxion'),    depth: 0.9, top: '13%', left: '44%', width: 'w-44' },
 ]
 
