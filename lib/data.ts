@@ -60,7 +60,7 @@ export const PROJECTS: Project[] = [
     domain: 'synmedia.agency',
     image: '/projects/synmedia-work.png',
     imageWidth: 1800,
-    imageHeight: 780,
+    imageHeight: 1000,
   },
   {
     id: 'ascenxion',
