@@ -165,7 +165,6 @@ export const ABOUT_SECTION = {
   paragraphs: [
     "I'm Ben. My dad sat me down at his computer when I was nine and showed me how a web page was made. I changed a line, the page changed with it, and that was pretty much what got me hooked.",
     "I kept building websites through school, small things for myself at first, then websites for people who asked. Now it's what I do full time. Design and build websites and landing pages for ecommerce brands, personal brands, and small businesses.",
-    "After launch the site stays looked after: hosting, updates, and changes as the business grows.",
   ],
   signoff: 'Ben Winzer',
   // Placeholder: back-view beach shot. Swap public/about/ben.jpg for a
