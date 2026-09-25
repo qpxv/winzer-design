@@ -83,6 +83,16 @@ export const PROJECTS: Project[] = [
     imageHeight: 1000,
   },
   {
+    id: 'shelfproof',
+    name: 'Shelfproof',
+    tagline: 'Amazon self-publishing coaching for beginners',
+    url: 'https://shelfproof-preview.vercel.app',
+    domain: 'virtualjk.com',
+    image: '/projects/shelfproof-work.png',
+    imageWidth: 1800,
+    imageHeight: 1000,
+  },
+  {
     id: 'jot',
     name: 'Jot',
     tagline: 'iOS app landing page',
