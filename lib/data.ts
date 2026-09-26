@@ -93,6 +93,16 @@ export const PROJECTS: Project[] = [
     imageHeight: 1000,
   },
   {
+    id: 'phantomfunnelz',
+    name: 'Phantom Funnelz',
+    tagline: 'Ghostwritten X Articles for tech founders',
+    url: 'https://phantomfunnelz-preview.vercel.app',
+    domain: 'phantomfunnelz.com',
+    image: '/projects/phantomfunnelz-work.png',
+    imageWidth: 1800,
+    imageHeight: 1000,
+  },
+  {
     id: 'jot',
     name: 'Jot',
     tagline: 'iOS app landing page',
