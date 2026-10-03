@@ -103,6 +103,16 @@ export const PROJECTS: Project[] = [
     imageHeight: 1000,
   },
   {
+    id: 'pixelframe',
+    name: 'Pixel Frame',
+    tagline: 'Launch video studio for AI and SaaS',
+    url: 'https://pixelframe-preview.vercel.app',
+    domain: 'pixelframe.co',
+    image: '/projects/pixelframe-work.png',
+    imageWidth: 1800,
+    imageHeight: 1000,
+  },
+  {
     id: 'jot',
     name: 'Jot',
     tagline: 'iOS app landing page',
