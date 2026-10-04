@@ -113,6 +113,16 @@ export const PROJECTS: Project[] = [
     imageHeight: 1000,
   },
   {
+    id: 'batincaylak',
+    name: 'Batın Çaylak',
+    tagline: 'Daily writing system for people with a 9-5',
+    url: 'https://batincaylak-preview.vercel.app',
+    domain: 'batincaylak.com',
+    image: '/projects/batincaylak-work.png',
+    imageWidth: 1800,
+    imageHeight: 1000,
+  },
+  {
     id: 'jot',
     name: 'Jot',
     tagline: 'iOS app landing page',
