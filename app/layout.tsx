@@ -1,55 +1,33 @@
-import type { Metadata } from "next";
-import { DM_Sans, DM_Serif_Display } from "next/font/google";
-import Script from "next/script";
+import type { Metadata, Viewport } from "next";
+import { Funnel_Display, Funnel_Sans, Newsreader } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { SITE } from "@/lib/site";
+import { SITE } from "@/lib/data";
 import "./globals.css";
 
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-dm-sans",
-});
-
-const dmSerif = DM_Serif_Display({
-  subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
-  variable: "--font-dm-serif",
-});
-
-const TITLE = SITE.name;
+const funnel = Funnel_Display({ variable: "--font-funnel", subsets: ["latin"], weight: ["500", "600"] });
+// Funnel Sans for body text: the companion to the display face, with a normal-width hyphen
+// (Host Grotesk drew hyphens nearly as long as an en dash).
+const funnelSans = Funnel_Sans({ variable: "--font-funnel-sans", subsets: ["latin"], weight: ["400", "500", "600"] });
+const newsreader = Newsreader({ variable: "--font-newsreader", subsets: ["latin"], style: ["italic"], weight: ["400"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
-  title: TITLE,
+  title: SITE.title,
   description: SITE.description,
-  alternates: { canonical: "/" },
-  openGraph: {
-    type: "website",
-    url: SITE.url,
-    siteName: SITE.name,
-    title: TITLE,
-    description: SITE.description,
-  },
-  twitter: {
-    card: "summary_large_image",
-    creator: SITE.xHandle,
-    title: TITLE,
-    description: SITE.description,
-  },
+  openGraph: { title: SITE.title, description: SITE.description, type: "website" },
+  twitter: { card: "summary_large_image", title: SITE.title, description: SITE.description },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export const viewport: Viewport = {
+  themeColor: "#f5f3ee",
+};
+
+export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${dmSerif.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">
+    <html lang="en" className={`${funnel.variable} ${funnelSans.variable} ${newsreader.variable} antialiased`}>
+      <body className="min-h-svh bg-paper text-ink">
         {children}
-        <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="afterInteractive" />
         <Analytics />
         <SpeedInsights />
       </body>

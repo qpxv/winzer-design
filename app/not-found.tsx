@@ -1,21 +1,18 @@
-import Link from 'next/link'
+import { NOT_FOUND } from "@/lib/data";
+import Button from "@/components/ui/Button";
+import Logo from "@/components/ui/Logo";
 
 export default function NotFound() {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center gap-6 px-6 text-center bg-bg">
-      <p className="text-accent font-medium text-sm">404</p>
-      <h1 className="font-serif text-4xl md:text-5xl tracking-tight text-text-primary">
-        This page wandered off
+    <main className="flex min-h-svh flex-col items-center justify-center gap-6 px-5 text-center">
+      <Logo />
+      <h1 className="mt-6 max-w-2xl font-display text-[clamp(2.4rem,6vw,4.5rem)]/[1] font-medium tracking-[-0.045em] text-balance">
+        {NOT_FOUND.heading}
       </h1>
-      <p className="text-text-secondary max-w-sm">
-        The link is broken or the page has moved. Head back to the start.
-      </p>
-      <Link
-        href="/"
-        className="text-sm font-medium text-accent hover:text-accent-hover transition-colors duration-200"
-      >
-        Back to home
-      </Link>
+      <p className="max-w-md text-[1.05rem]/[1.6] text-ink-muted">{NOT_FOUND.body}</p>
+      <Button href="/" size="lg" className="mt-2">
+        {NOT_FOUND.cta}
+      </Button>
     </main>
-  )
+  );
 }

@@ -1,78 +1,65 @@
+export interface Link {
+  label: string;
+  href: string;
+}
+
+export interface ImageAsset {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
 export interface Project {
-  id: string
-  name: string
-  tagline: string
-  url: string
-  domain: string
-  image: string
-  imageWidth: number
-  imageHeight: number
+  id: string;
+  name: string;
+  tagline: string;
+  url: string;
+  domain: string;
+  image: ImageAsset;
 }
 
-export interface ProcessStep {
-  number: string
-  title: string
-  description: string
+export interface Stat {
+  value: string;
+  label: string;
 }
 
-export interface TestimonialScreenshot {
-  id: number
-  // null while it's a placeholder; set to a path in /public once the real
-  // Telegram screenshot is dropped in
-  src: string | null
-  alt: string
-  width: number
-  height: number
+export interface MessageShot extends ImageAsset {
+  id: number;
+}
+
+export interface ComparisonRow {
+  id: string;
+  feature: string;
+  them: string;
 }
 
 export interface PricingTier {
-  id: string
-  name: string
-  price: string
-  description: string
-  features: string[]
-  highlighted?: boolean
+  id: string;
+  name: string;
+  price: string;
+  description: string;
+  features: string[];
+  isHighlighted: boolean;
+  /** The build shown above the price, plus the subpages whose windows stack behind it. */
+  preview: { projectId: string; subpages: string[] };
 }
 
-export type ComparisonIcon =
-  | 'Palette'
-  | 'Code2'
-  | 'Gauge'
-  | 'TrendingUp'
-  | 'PenLine'
-  | 'Server'
-  | 'UserRound'
-  | 'Rocket'
-  | 'Tag'
-  | 'Wrench'
+export interface ProcessStep {
+  id: string;
+  when: string;
+  title: string;
+  description: string;
+  /** Shown in the address bar of the window that illustrates this step. */
+  domain: string;
+}
 
-export interface ComparisonRow {
-  icon: ComparisonIcon
-  feature: string
-  them: string
+export interface FaqGroup {
+  name: string;
+  items: FaqItem[];
 }
 
 export interface FaqItem {
-  question: string
-  answer: string
-}
-
-export interface CaseStudyStat {
-  value: string
-  label: string
-}
-
-export interface CaseStudy {
-  id: string
-  heading: string
-  client: {
-    name: string
-    role: string
-  }
-  challenge: string[]
-  before?: { src: string; alt: string }
-  after: { src: string; alt: string }
-  stats: CaseStudyStat[]
-  outcome: string
-  quote: string
+  question: string;
+  answer: string;
 }

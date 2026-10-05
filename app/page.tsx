@@ -1,33 +1,31 @@
-import NavBar from '@/components/sections/NavBar'
-import HeroSection from '@/components/sections/HeroSection'
-import WorkSection from '@/components/sections/WorkSection'
-import ProcessSection from '@/components/sections/ProcessSection'
-import AboutSection from '@/components/sections/AboutSection'
-import TestimonialsSection from '@/components/sections/TestimonialsSection'
-import ComparisonSection from '@/components/sections/ComparisonSection'
-import PricingSection from '@/components/sections/PricingSection'
-import FaqSection from '@/components/sections/FaqSection'
-import CaseStudySection from '@/components/sections/CaseStudySection'
-import ContactSection from '@/components/sections/ContactSection'
-import FooterSection from '@/components/sections/FooterSection'
-import CalendlyModal from '@/components/ui/CalendlyModal'
+import Navbar from "@/components/Navbar";
+import HeroSection from "@/components/HeroSection";
+import WorkSection from "@/components/WorkSection";
+import ResultsSection from "@/components/ResultsSection";
+import MessagesSection from "@/components/MessagesSection";
+import ComparisonSection from "@/components/ComparisonSection";
+import PricingSection from "@/components/PricingSection";
+import AboutSection from "@/components/AboutSection";
+import FaqSection from "@/components/FaqSection";
+import ContactSection from "@/components/ContactSection";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main>
-      <NavBar />
-      <HeroSection />
-      <WorkSection />
-      <ProcessSection />
-      <TestimonialsSection />
-      <CaseStudySection />
-      <ComparisonSection />
-      <PricingSection />
-      <FaqSection />
-      <AboutSection />
-      <ContactSection />
-      <FooterSection />
-      <CalendlyModal />
-    </main>
-  )
+    <>
+      <Navbar />
+      <main>
+        <HeroSection />
+        <WorkSection />
+        <ResultsSection />
+        <MessagesSection />
+        <ComparisonSection />
+        <PricingSection />
+        <AboutSection />
+        <FaqSection />
+        <ContactSection />
+      </main>
+      <Footer />
+    </>
+  );
 }

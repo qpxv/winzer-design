@@ -1,24 +1,18 @@
-import { Variants } from 'framer-motion'
-import type { Easing } from 'framer-motion'
+import type { Variants } from "framer-motion";
 
-const ease: Easing = [0.25, 0.1, 0.25, 1] as [number, number, number, number]
+export const easeOutExpo: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease } },
-}
+  hidden: { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: easeOutExpo } },
+};
 
 export const fadeIn: Variants = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.5, ease } },
-}
+  visible: { opacity: 1, transition: { duration: 0.9, ease: easeOutExpo } },
+};
 
-export const staggerContainer: Variants = {
+export const stagger: Variants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
-}
-
-export const scaleIn: Variants = {
-  hidden: { opacity: 0, scale: 0.94 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease } },
-}
+  visible: { transition: { staggerChildren: 0.09, delayChildren: 0.05 } },
+};
