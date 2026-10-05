@@ -131,7 +131,7 @@ export const BERLIN_CASE = {
   // Kept in this case study, unattributed, exactly as the current site places it.
   quote:
     "Hey Ben, needed to reach out personally. Your speed and initiative are next level. Your work ethic is seriously impressive, you're crushing it way beyond your years, and I'm genuinely excited to see where we can take this together.",
-  quoteSource: "Darrell Kawooya, Refined Berlin",
+  quoteAuthor: "Darrell Kawooya",
   domain: "Refined Berlin store",
   image: { src: "/images/case-studies/refined-berlin-after.png", alt: "A Refined Berlin product page after the rebuild", width: 2910, height: 1628 } satisfies ImageAsset,
   cta: "Get a free first draft",

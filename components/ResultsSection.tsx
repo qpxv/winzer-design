@@ -30,12 +30,17 @@ function StoryIntro({ client, role, heading }: { client: string; role: string; h
   );
 }
 
-function Quote({ text, source }: { text: string; source: string }) {
+// The quotes are real messages from clients, so they are set as one: a chat bubble, name underneath.
+function Quote({ text, name, detail }: { text: string; name: string; detail: string }) {
   return (
-    <blockquote className="border-l-2 border-accent pl-5">
-      <p className="font-serif text-[1.2rem]/[1.45] italic text-ink">{text}</p>
-      <footer className="mt-3 text-[0.9rem] text-ink-muted">{source}</footer>
-    </blockquote>
+    <figure>
+      <blockquote className="rounded-[1.4rem] rounded-bl-md bg-card px-5 py-4 text-[1.02rem]/[1.6] text-ink shadow-[0_18px_40px_-28px_rgba(0,0,0,0.35)] ring-1 ring-line">
+        {text}
+      </blockquote>
+      <figcaption className="mt-3 pl-1 text-[0.9rem] text-ink-muted">
+        <span className="font-semibold text-ink">{name}</span>, {detail}
+      </figcaption>
+    </figure>
   );
 }
 
@@ -90,7 +95,7 @@ const tylerSteps: StoryStep[] = [
           ))}
         </div>
         <div className="mt-8">
-          <Quote text={TYLER_CASE.quote} source={TYLER_CASE.client} />
+          <Quote text={TYLER_CASE.quote} name={TYLER_CASE.client} detail={TYLER_CASE.role} />
         </div>
       </StepText>
     ),
@@ -121,7 +126,7 @@ const berlinSteps: StoryStep[] = [
         </div>
         <p className={cn(BODY, "mt-8")}>{BERLIN_CASE.outcome}</p>
         <div className="mt-8">
-          <Quote text={BERLIN_CASE.quote} source={BERLIN_CASE.quoteSource} />
+          <Quote text={BERLIN_CASE.quote} name={BERLIN_CASE.quoteAuthor} detail={BERLIN_CASE.client} />
         </div>
       </StepText>
     ),
