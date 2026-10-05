@@ -43,9 +43,6 @@
     0 18px 40px -12px color-mix(in srgb, black 45%, transparent),
     0 50px 100px -40px color-mix(in srgb, black 55%, transparent);
 
-  --shadow-accent-md: 0 18px 40px -18px color-mix(in srgb, var(--color-accent) 55%, transparent);
-  --shadow-accent-lg: 0 40px 90px -40px color-mix(in srgb, var(--color-accent) 50%, transparent);
-
   /* Seamless loop: the track holds the list twice, so -50% lands exactly on the copy. */
   --animate-marquee: marquee var(--marquee-duration, 70s) linear infinite;
   @keyframes marquee {

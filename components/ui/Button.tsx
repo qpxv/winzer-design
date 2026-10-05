@@ -15,7 +15,7 @@ type LinkProps = BaseProps & { href: string } & Omit<AnchorHTMLAttributes<HTMLAn
 type NativeButtonProps = BaseProps & { href?: undefined } & Omit<ButtonHTMLAttributes<HTMLButtonElement>, "className" | "children">;
 
 const variantClasses: Record<Variant, string> = {
-  primary: "bg-accent text-white shadow-accent-md hover:bg-accent-hover",
+  primary: "bg-accent text-white hover:bg-accent-hover",
   ink: "bg-ink text-snow hover:bg-accent",
   outline: "border border-line-strong text-ink hover:border-ink",
   snow: "bg-snow text-ink hover:bg-accent hover:text-white",

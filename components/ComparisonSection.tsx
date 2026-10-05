@@ -25,7 +25,7 @@ export default function ComparisonSection() {
         {/* Both lists sit side by side so the whole comparison reads in one look. Mine is raised and lit;
             the agency's card tucks under its edge on desktop. */}
         <Reveal className="mt-14 grid items-center gap-5 md:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:mt-20">
-          <div className="relative z-10 rounded-[2rem] bg-card p-7 shadow-accent-lg ring-2 ring-accent sm:p-10">
+          <div className="relative z-10 rounded-[2rem] bg-card p-7 ring-2 ring-accent sm:p-10">
             <div className="flex items-center gap-3">
               <LogoMark />
               <h3 className="font-display text-[1.6rem]/[1.1] font-medium tracking-[-0.03em] text-ink">{COMPARISON.columnUs}</h3>

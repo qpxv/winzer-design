@@ -7,7 +7,6 @@ import type { PricingTier } from "@/types";
 import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
 import BrowserFrame from "@/components/ui/BrowserFrame";
-import ProjectGlow from "@/components/work/ProjectGlow";
 import ProcessStages from "@/components/pricing/ProcessStages";
 
 // Windows behind the front one, nearest first: each sits a step higher and narrower, and a
@@ -23,7 +22,6 @@ function TierWindows({ tier }: { tier: PricingTier }) {
   return (
     // The same headroom on every tier, so the names and prices below line up across cards.
     <div className="relative isolate pt-[18%]">
-      <ProjectGlow project={project} />
       {tier.preview.subpages
         .map((subpage, index) => (
           <div key={subpage} aria-hidden className={cn("absolute inset-x-0 top-0 origin-top", BEHIND[index])}>
@@ -55,7 +53,7 @@ function TierCard({ tier }: { tier: PricingTier }) {
     <div
       className={cn(
         "group flex w-full flex-col overflow-clip rounded-[2rem] bg-night-raised p-6 sm:p-9",
-        tier.isHighlighted ? "shadow-accent-lg ring-2 ring-accent" : "ring-1 ring-snow-line"
+        tier.isHighlighted ? "ring-2 ring-accent" : "ring-1 ring-snow-line"
       )}
     >
       <TierWindows tier={tier} />

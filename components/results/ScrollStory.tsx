@@ -43,7 +43,7 @@ export default function ScrollStory({ domain, steps }: { domain: string; steps: 
     <div className="grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-16">
       <div className="max-lg:hidden">
         <div className="sticky top-[calc(50vh-14rem)]">
-          <BrowserFrame domain={domain} isWidescreen className="shadow-accent-lg">
+          <BrowserFrame domain={domain} isWidescreen>
             {steps.map((step, index) => (
               <Image
                 key={step.id}
